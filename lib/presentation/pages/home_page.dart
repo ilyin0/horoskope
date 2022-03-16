@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/utils/build_context_ext.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,6 +14,9 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Text(
           context.localizations.homePage,
+          style: TextStyle(
+            color: HoroskopeTheme.color(context).primaryBlue,
+          ),
         ),
       ),
     );
