@@ -1,0 +1,8 @@
+arb-dir: lib/l10n
+template-arb-file: app_en.arb
+synthetic-package: false
+output-class: HoroskopeLocalizations
+output-localization-file: horoskope_localizations.dart
+preferred-supported-locales: "en"
+use-deferred-loading: false
+untranslated-messages-file: lib/l10n/missing_localizations.json
