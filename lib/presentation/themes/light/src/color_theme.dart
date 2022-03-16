@@ -5,4 +5,7 @@ class _LightHoroskopeColorTheme implements HoroskopeColorThemeData {
 
   @override
   Color get primaryBlue => _AppColors.primaryBlue;
+
+  @override
+  Color get secondaryGrey => _AppColors.secondaryGrey;
 }
