@@ -13,12 +13,17 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  flutter_bloc: ^8.0.1
+  get_it: ^7.2.0
+  injectable: ^1.5.3
   intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
+  build_runner: ^2.1.8
+  injectable_generator: ^1.5.3
 
 flutter:
   uses-material-design: true
