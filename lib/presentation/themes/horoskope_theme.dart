@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:horoskope/presentation/widgets/info_card.dart';
 
 part 'theme/horoskope_button_theme_data.dart';
 part 'theme/horoskope_color_theme_data.dart';
