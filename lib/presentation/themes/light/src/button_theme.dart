@@ -8,7 +8,7 @@ class _LightHoroskopeButtonTheme implements HoroskopeButtonThemeData {
   HoroskopeButtonStyle get _base => HoroskopeButtonStyle(
         borderRadius: _baseBorderRadius,
         buttonStyle: TextButton.styleFrom(
-          shadowColor: _AppColors.placeholderGrey,
+          shadowColor: _AppColors.lightGrey,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(_baseBorderRadius),
           ),
@@ -33,6 +33,7 @@ class _LightHoroskopeButtonTheme implements HoroskopeButtonThemeData {
         buttonStyle: _baseWithPadding.buttonStyle.copyWith(
           foregroundColor: MaterialStateProperty.all(_AppColors.white),
           backgroundColor: MaterialStateProperty.all(_AppColors.primaryBlue),
+          overlayColor: MaterialStateProperty.all(_AppColors.white10),
         ),
       );
 
@@ -41,6 +42,7 @@ class _LightHoroskopeButtonTheme implements HoroskopeButtonThemeData {
         buttonStyle: _baseWithPadding.buttonStyle.copyWith(
           foregroundColor: MaterialStateProperty.all(_AppColors.primaryBlue),
           backgroundColor: MaterialStateProperty.all(_AppColors.secondaryGrey),
+          overlayColor: MaterialStateProperty.all(_AppColors.primaryBlue10),
         ),
       );
 
@@ -49,15 +51,16 @@ class _LightHoroskopeButtonTheme implements HoroskopeButtonThemeData {
         buttonStyle: _baseWithPadding.buttonStyle.copyWith(
           foregroundColor: MaterialStateProperty.all(_AppColors.brinkPink),
           backgroundColor: MaterialStateProperty.all(_AppColors.isabelline),
+          overlayColor: MaterialStateProperty.all(_AppColors.brinkPink10),
         ),
       );
 
   @override
   HoroskopeButtonStyle get disabled => _baseWithPadding.copyWith(
         buttonStyle: _baseWithPadding.buttonStyle.copyWith(
-          foregroundColor:
-              MaterialStateProperty.all(_AppColors.placeholderGrey),
-          backgroundColor: MaterialStateProperty.all(_AppColors.disabledButton),
+          foregroundColor: MaterialStateProperty.all(_AppColors.lightGrey),
+          backgroundColor: MaterialStateProperty.all(_AppColors.whiteUltra),
+          overlayColor: MaterialStateProperty.all(_AppColors.lightGrey10),
           shadowColor: MaterialStateProperty.all(_AppColors.transparent),
         ),
       );
