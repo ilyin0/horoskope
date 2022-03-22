@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:horoskope/presentation/utils/default_values.dart' as defaults;
+import 'package:horoskope/presentation/widgets/elevated_card.dart';
 
 abstract class InfoCardTextTheme {
   TextStyle get infoCardBigTitle;
@@ -31,21 +32,10 @@ class InfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final title = this.title;
 
-    return Container(
+    return ElevatedCard(
+      color: color,
+      shadowColor: shadowColor,
       width: width,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-            color: shadowColor,
-            offset: const Offset(2, 2),
-            blurRadius: 4,
-            blurStyle: BlurStyle.normal,
-          ),
-        ],
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
