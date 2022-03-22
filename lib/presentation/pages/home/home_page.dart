@@ -5,7 +5,7 @@ import 'package:horoskope/presentation/pages/home/home_cubit.dart';
 import 'package:horoskope/presentation/pages/home/home_state.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/utils/build_context_ext.dart';
-import 'package:horoskope/presentation/widgets/info_card.dart';
+import 'package:horoskope/presentation/widgets/horoskope_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,13 +19,35 @@ class HomePage extends StatelessWidget {
           appBar: AppBar(
             title: Text(context.localizations.horoskope),
           ),
-          body: Center(
-            child: InfoCard(
-              title: 'Title of the Card',
-              body: state.todayForecast,
-              textTheme: HoroskopeTheme.text(context),
-              width: 300,
-            ),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 8, width: double.infinity),
+              HoroskopeButton(
+                child: const Text('Sign Up'),
+                onTap: () {},
+                style: HoroskopeTheme.button(context).primary,
+              ),
+              const SizedBox(height: 8),
+              HoroskopeButton(
+                child: const Text('Sign Up'),
+                onTap: () {},
+                style: HoroskopeTheme.button(context).secondary1,
+              ),
+              const SizedBox(height: 8),
+              HoroskopeButton(
+                child: const Text('Sign Up'),
+                onTap: () {},
+                style: HoroskopeTheme.button(context).secondary2,
+              ),
+              const SizedBox(height: 8),
+              HoroskopeButton(
+                child: const Text('Sign Up'),
+                onTap: () {},
+                style: HoroskopeTheme.button(context).disabled,
+              ),
+              const SizedBox(height: 8),
+            ],
           ),
         );
       },
