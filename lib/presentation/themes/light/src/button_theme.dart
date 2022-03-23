@@ -64,4 +64,38 @@ class _LightHoroskopeButtonTheme implements HoroskopeButtonThemeData {
           shadowColor: MaterialStateProperty.all(_AppColors.transparent),
         ),
       );
+
+  HoroskopeButtonStyle get _tab => _base.copyWith(
+        borderRadius: 20,
+        buttonStyle: _base.buttonStyle.copyWith(
+          padding: MaterialStateProperty.all(
+            const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 8,
+            ),
+          ),
+          overlayColor: MaterialStateProperty.all(_AppColors.transparent),
+          enableFeedback: false,
+        ),
+      );
+
+  @override
+  HoroskopeButtonStyle getPrimaryTab(bool isSelected) {
+    return _tab.copyWith(
+      buttonStyle: _tab.buttonStyle.copyWith(
+        foregroundColor: MaterialStateProperty.all(
+          isSelected ? _AppColors.white : _AppColors.darkElectricBlue,
+        ),
+        backgroundColor: MaterialStateProperty.all(
+          isSelected ? _AppColors.primaryBlue : _AppColors.white,
+        ),
+        textStyle: MaterialStateProperty.all(
+          const TextStyle(
+            fontWeight: FontWeight.normal,
+            fontSize: 18,
+          ),
+        ),
+      ),
+    );
+  }
 }
