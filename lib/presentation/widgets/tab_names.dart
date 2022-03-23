@@ -94,9 +94,9 @@ class _TabNamesState extends State<TabNames> {
       _tabs[_selectedIndex] = _tabs[_selectedIndex].copyWith(isSelected: false);
       _tabs[index] = _tabs[index].copyWith(isSelected: true);
       _selectedIndex = index;
-
-      _tabs[index].onTap?.call();
     });
+
+    _tabs[index].onTap?.call();
   }
 
   @override
