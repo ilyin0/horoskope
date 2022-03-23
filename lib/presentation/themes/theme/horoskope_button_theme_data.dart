@@ -7,4 +7,7 @@ abstract class HoroskopeButtonThemeData {
   HoroskopeButtonStyle get disabled;
 
   HoroskopeButtonStyle getPrimaryTab(bool isSelected);
+  HoroskopeButtonStyle getPrimaryBigTab(bool isSelected);
+  HoroskopeButtonStyle getSecondaryTab(bool isSelected);
+  HoroskopeButtonStyle getSecondaryBigTab(bool isSelected);
 }

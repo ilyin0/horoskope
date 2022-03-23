@@ -43,8 +43,8 @@ class HomePage extends StatelessWidget {
                         'Week',
                         'Month',
                       ],
-                      defaultTheme: HoroskopeTheme.button(context),
-                    )
+                      style: HoroskopeTheme.button(context).getSecondaryBigTab,
+                    ),
                   ],
                 ),
               ),

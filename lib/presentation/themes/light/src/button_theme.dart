@@ -70,8 +70,8 @@ class _LightHoroskopeButtonTheme implements HoroskopeButtonThemeData {
         buttonStyle: _base.buttonStyle.copyWith(
           padding: MaterialStateProperty.all(
             const EdgeInsets.symmetric(
-              horizontal: 20,
               vertical: 8,
+              horizontal: 20,
             ),
           ),
           overlayColor: MaterialStateProperty.all(_AppColors.transparent),
@@ -91,11 +91,54 @@ class _LightHoroskopeButtonTheme implements HoroskopeButtonThemeData {
         ),
         textStyle: MaterialStateProperty.all(
           const TextStyle(
-            fontWeight: FontWeight.normal,
             fontSize: 18,
+            fontWeight: FontWeight.normal,
           ),
         ),
       ),
+    );
+  }
+
+  @override
+  HoroskopeButtonStyle getPrimaryBigTab(bool isSelected) {
+    return getPrimaryTab(isSelected).copyWith(
+      borderRadius: 40,
+      buttonStyle: getPrimaryTab(isSelected).buttonStyle.copyWith(
+            padding: MaterialStateProperty.all(
+              const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            ),
+            textStyle: MaterialStateProperty.all(
+              const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
+          ),
+    );
+  }
+
+  @override
+  HoroskopeButtonStyle getSecondaryTab(bool isSelected) {
+    return getPrimaryTab(isSelected).copyWith(
+      buttonStyle: getPrimaryTab(isSelected).buttonStyle.copyWith(
+            foregroundColor: MaterialStateProperty.all(
+              isSelected ? _AppColors.isabelline : _AppColors.darkElectricBlue,
+            ),
+            backgroundColor: MaterialStateProperty.all(
+              isSelected ? _AppColors.brinkPink : _AppColors.white,
+            ),
+          ),
+    );
+  }
+
+  @override
+  HoroskopeButtonStyle getSecondaryBigTab(bool isSelected) {
+    return getPrimaryBigTab(isSelected).copyWith(
+      buttonStyle: getPrimaryBigTab(isSelected).buttonStyle.copyWith(
+            foregroundColor: MaterialStateProperty.all(
+              isSelected ? _AppColors.isabelline : _AppColors.darkElectricBlue,
+            ),
+            backgroundColor: MaterialStateProperty.all(
+              isSelected ? _AppColors.brinkPink : _AppColors.white,
+            ),
+          ),
     );
   }
 }
