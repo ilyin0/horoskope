@@ -23,4 +23,5 @@ abstract class _AppColors {
   static const isabelline = Color(0xFFF7F4F3);
   static const whiteUltra = Color(0xFFFCFBFA);
   static const transparent = Colors.transparent;
+  static const darkElectricBlue = Color(0xFF546A7B);
 }

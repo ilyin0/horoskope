@@ -27,9 +27,21 @@ class HoroskopeButtonStyle {
     ButtonStyle? buttonStyle,
     double? borderRadius,
   }) {
+    if (borderRadius != null) {
+      return HoroskopeButtonStyle(
+        buttonStyle: (buttonStyle ?? _buttonStyle).copyWith(
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(borderRadius),
+            ),
+          ),
+        ),
+        borderRadius: borderRadius,
+      );
+    }
     return HoroskopeButtonStyle(
-      buttonStyle: buttonStyle ?? _buttonStyle,
-      borderRadius: borderRadius ?? this.borderRadius,
+      buttonStyle: buttonStyle ?? this.buttonStyle,
+      borderRadius: this.borderRadius,
     );
   }
 }

@@ -64,4 +64,81 @@ class _LightHoroskopeButtonTheme implements HoroskopeButtonThemeData {
           shadowColor: MaterialStateProperty.all(_AppColors.transparent),
         ),
       );
+
+  HoroskopeButtonStyle get _tab => _base.copyWith(
+        borderRadius: 20,
+        buttonStyle: _base.buttonStyle.copyWith(
+          padding: MaterialStateProperty.all(
+            const EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: 20,
+            ),
+          ),
+          overlayColor: MaterialStateProperty.all(_AppColors.transparent),
+          enableFeedback: false,
+        ),
+      );
+
+  @override
+  HoroskopeButtonStyle getPrimaryTab(bool isSelected) {
+    return _tab.copyWith(
+      buttonStyle: _tab.buttonStyle.copyWith(
+        foregroundColor: MaterialStateProperty.all(
+          isSelected ? _AppColors.white : _AppColors.darkElectricBlue,
+        ),
+        backgroundColor: MaterialStateProperty.all(
+          isSelected ? _AppColors.primaryBlue : _AppColors.white,
+        ),
+        textStyle: MaterialStateProperty.all(
+          const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  HoroskopeButtonStyle getPrimaryBigTab(bool isSelected) {
+    return getPrimaryTab(isSelected).copyWith(
+      borderRadius: 40,
+      buttonStyle: getPrimaryTab(isSelected).buttonStyle.copyWith(
+            padding: MaterialStateProperty.all(
+              const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            ),
+            textStyle: MaterialStateProperty.all(
+              const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
+          ),
+    );
+  }
+
+  @override
+  HoroskopeButtonStyle getSecondaryTab(bool isSelected) {
+    return getPrimaryTab(isSelected).copyWith(
+      buttonStyle: getPrimaryTab(isSelected).buttonStyle.copyWith(
+            foregroundColor: MaterialStateProperty.all(
+              isSelected ? _AppColors.isabelline : _AppColors.darkElectricBlue,
+            ),
+            backgroundColor: MaterialStateProperty.all(
+              isSelected ? _AppColors.brinkPink : _AppColors.white,
+            ),
+          ),
+    );
+  }
+
+  @override
+  HoroskopeButtonStyle getSecondaryBigTab(bool isSelected) {
+    return getPrimaryBigTab(isSelected).copyWith(
+      buttonStyle: getPrimaryBigTab(isSelected).buttonStyle.copyWith(
+            foregroundColor: MaterialStateProperty.all(
+              isSelected ? _AppColors.isabelline : _AppColors.darkElectricBlue,
+            ),
+            backgroundColor: MaterialStateProperty.all(
+              isSelected ? _AppColors.brinkPink : _AppColors.white,
+            ),
+          ),
+    );
+  }
 }
