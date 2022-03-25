@@ -8,8 +8,24 @@ import 'package:horoskope/presentation/utils/build_context_ext.dart';
 import 'package:horoskope/presentation/widgets/info_card.dart';
 import 'package:horoskope/presentation/widgets/tab_names.dart';
 
+abstract class HomePageColorThemeData implements HoroskopeBaseColorThemeData {
+  Color get homePageMainColor;
+}
+
+abstract class HomePageTextThemeData implements InfoCardTextThemeData {
+  TextStyle get homePageTitle;
+}
+
+typedef HomePageThemeData = HoroskopeThemeData<HomePageTextThemeData,
+    HomePageColorThemeData, HoroskopeButtonThemeData>;
+
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final HomePageThemeData theme;
+
+  const HomePage({
+    Key? key,
+    required this.theme,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +48,7 @@ class HomePage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: InfoCard(
                         body: state.todayForecast,
-                        textTheme: HoroskopeTheme.text(context),
+                        theme: theme,
                       ),
                     ),
                     const SizedBox(height: 8),

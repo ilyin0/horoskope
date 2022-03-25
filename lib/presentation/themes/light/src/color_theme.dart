@@ -4,8 +4,6 @@ class _LightHoroskopeColorTheme implements HoroskopeColorThemeData {
   const _LightHoroskopeColorTheme();
 
   @override
-  Color get primaryBlue => _AppColors.primaryBlue;
+  Color get homePageMainColor => _AppColors.primaryBlue;
 
-  @override
-  Color get secondaryGrey => _AppColors.secondaryGrey;
 }

@@ -20,7 +20,9 @@ class App extends StatelessWidget {
                 HoroskopeLocalizations.localizationsDelegates,
             onGenerateTitle: (context) => context.localizations.horoskope,
             theme: HoroskopeTheme.of(context).themeData,
-            home: const HomePage(),
+            home: HomePage(
+              theme: HoroskopeTheme.of(context),
+            ),
           );
         },
       ),

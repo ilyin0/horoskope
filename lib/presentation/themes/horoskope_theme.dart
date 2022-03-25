@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:horoskope/presentation/pages/home/home_page.dart';
 import 'package:horoskope/presentation/themes/styles/horoskope_button_style.dart';
 import 'package:horoskope/presentation/widgets/info_card.dart';
 
@@ -8,9 +9,11 @@ part 'theme/horoskope_text_theme_data.dart';
 part 'theme/horoskope_theme_data.dart';
 
 class HoroskopeTheme extends InheritedWidget {
-  static HoroskopeThemeData of(BuildContext context) => maybeOf(context)!;
+  static HoroskopeThemeData<HoroskopeTextThemeData, HoroskopeColorThemeData,
+      HoroskopeButtonThemeData> of(BuildContext context) => maybeOf(context)!;
 
-  static HoroskopeThemeData? maybeOf(BuildContext context) {
+  static HoroskopeThemeData<HoroskopeTextThemeData, HoroskopeColorThemeData,
+      HoroskopeButtonThemeData>? maybeOf(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<HoroskopeTheme>()?.theme;
   }
 
@@ -21,7 +24,8 @@ class HoroskopeTheme extends InheritedWidget {
   static HoroskopeButtonThemeData button(BuildContext context) =>
       of(context).buttonTheme;
 
-  final HoroskopeThemeData theme;
+  final HoroskopeThemeData<HoroskopeTextThemeData, HoroskopeColorThemeData,
+      HoroskopeButtonThemeData> theme;
 
   const HoroskopeTheme({
     Key? key,

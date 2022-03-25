@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/utils/default_values.dart' as defaults;
 import 'package:horoskope/presentation/widgets/elevated_card.dart';
 
-abstract class InfoCardTextTheme {
+abstract class InfoCardTextThemeData implements HoroskopeBaseTextThemeData {
   TextStyle get infoCardBigTitle;
   TextStyle get infoCardTitle;
   TextStyle get infoCardBody;
 }
+
+typedef InfoCardThemeData = HoroskopeThemeData<InfoCardTextThemeData,
+    HoroskopeBaseColorThemeData, HoroskopeBaseButtonThemeData>;
 
 class InfoCard extends StatelessWidget {
   final String body;
@@ -15,12 +19,12 @@ class InfoCard extends StatelessWidget {
   final Color shadowColor;
   final double width;
   final bool big;
-  final InfoCardTextTheme textTheme;
+  final InfoCardThemeData theme;
 
   const InfoCard({
     Key? key,
     required this.body,
-    required this.textTheme,
+    required this.theme,
     this.title,
     this.color = defaults.infoCardColor,
     this.shadowColor = defaults.infoCardShadowColor,
@@ -43,13 +47,15 @@ class InfoCard extends StatelessWidget {
           if (title != null) ...[
             Text(
               title,
-              style: big ? textTheme.infoCardBigTitle : textTheme.infoCardTitle,
+              style: big
+                  ? theme.textTheme.infoCardBigTitle
+                  : theme.textTheme.infoCardTitle,
             ),
             const SizedBox(height: 8)
           ],
           Text(
             body,
-            style: textTheme.infoCardBody,
+            style: theme.textTheme.infoCardBody,
           ),
         ],
       ),
