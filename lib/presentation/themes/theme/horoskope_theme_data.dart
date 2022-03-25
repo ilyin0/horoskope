@@ -1,19 +1,22 @@
 part of '../horoskope_theme.dart';
 
-class HoroskopeThemeData {
+class HoroskopeThemeData<
+    T extends HoroskopeBaseTextThemeData,
+    C extends HoroskopeBaseColorThemeData,
+    B extends HoroskopeBaseButtonThemeData> {
   final ThemeData themeData;
 
   /// Should not be used directly.
   /// Please, use `HoroskopeTheme.text(context)`
-  final HoroskopeTextThemeData textTheme;
+  final T textTheme;
 
   /// Should not be used directly.
   /// Please, use `HoroskopeTheme.color(context)`
-  final HoroskopeColorThemeData colorTheme;
+  final C colorTheme;
 
   /// Should not be used directly.
   /// Please, use `HoroskopeTheme.button(context)`
-  final HoroskopeButtonThemeData buttonTheme;
+  final B buttonTheme;
 
   const HoroskopeThemeData({
     required this.themeData,

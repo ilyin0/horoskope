@@ -8,7 +8,8 @@ part 'src/constants.dart';
 part 'src/text_theme.dart';
 part 'src/theme_data.dart';
 
-class LightHoroskopeThemeData extends HoroskopeThemeData {
+class LightHoroskopeThemeData extends HoroskopeThemeData<HoroskopeTextThemeData,
+    HoroskopeColorThemeData, HoroskopeButtonThemeData> {
   LightHoroskopeThemeData()
       : super(
           themeData: _themeData,

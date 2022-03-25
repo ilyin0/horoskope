@@ -1,5 +1,9 @@
 part of '../light_theme.dart';
 
+const _title1 = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 36,
+);
 const _title2 = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 24,
