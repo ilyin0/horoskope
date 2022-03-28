@@ -5,6 +5,7 @@ import 'package:horoskope/presentation/pages/home/home_cubit.dart';
 import 'package:horoskope/presentation/pages/home/home_state.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/utils/build_context_ext.dart';
+import 'package:horoskope/presentation/widgets/app_bars/horoskope_title_app_bar.dart';
 import 'package:horoskope/presentation/widgets/info_card.dart';
 import 'package:horoskope/presentation/widgets/tab_names.dart';
 
@@ -33,8 +34,10 @@ class HomePage extends StatelessWidget {
       bloc: locator.get<HomeCubit>(),
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text(context.localizations.horoskope),
+          appBar: HoroskopeTitleAppBar(
+            title: context.localizations.horoskope,
+            iconColor: theme.colorTheme.homePageMainColor,
+            titleStyle: theme.textTheme.homePageTitle,
           ),
           body: Stack(
             children: [
@@ -43,6 +46,11 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    const SizedBox(height: 8),
+                    TabNames.fromNames(
+                      names: const ['Today', 'Tomorrow', 'Week', 'Month'],
+                      style: HoroskopeTheme.button(context).getPrimaryTab,
+                    ),
                     const SizedBox(height: 8, width: double.infinity),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -50,16 +58,6 @@ class HomePage extends StatelessWidget {
                         body: state.todayForecast,
                         theme: theme,
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    TabNames.fromNames(
-                      names: const [
-                        'Today',
-                        'Tomorrow',
-                        'Week',
-                        'Month',
-                      ],
-                      style: HoroskopeTheme.button(context).getSecondaryBigTab,
                     ),
                   ],
                 ),
