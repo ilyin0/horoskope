@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:horoskope/di/locator.dart';
 import 'package:horoskope/presentation/pages/home/home_cubit.dart';
 import 'package:horoskope/presentation/pages/home/home_state.dart';
+import 'package:horoskope/presentation/resources/app_images_asset.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/utils/build_context_ext.dart';
 import 'package:horoskope/presentation/widgets/app_bars/horoskope_title_app_bar.dart';
+import 'package:horoskope/presentation/widgets/horoskope_page.dart';
 import 'package:horoskope/presentation/widgets/info_card.dart';
 import 'package:horoskope/presentation/widgets/tab_names.dart';
 
@@ -33,36 +35,34 @@ class HomePage extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       bloc: locator.get<HomeCubit>(),
       builder: (context, state) {
-        return Scaffold(
+        return HoroskopePage(
           appBar: HoroskopeTitleAppBar(
             title: context.localizations.horoskope,
             iconColor: theme.colorTheme.homePageMainColor,
             titleStyle: theme.textTheme.homePageTitle,
           ),
-          body: Stack(
-            children: [
-              const Placeholder(),
-              SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 8),
-                    TabNames.fromNames(
-                      names: const ['Today', 'Tomorrow', 'Week', 'Month'],
-                      style: HoroskopeTheme.button(context).getPrimaryTab,
-                    ),
-                    const SizedBox(height: 8, width: double.infinity),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: InfoCard(
-                        body: state.todayForecast,
-                        theme: theme,
-                      ),
-                    ),
-                  ],
+          backgroundImage: const AssetImage(
+            AppImagesAsset.horoskopeBackground,
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 8),
+                TabNames.fromNames(
+                  names: const ['Today', 'Tomorrow', 'Week', 'Month'],
+                  style: HoroskopeTheme.button(context).getPrimaryTab,
                 ),
-              ),
-            ],
+                const SizedBox(height: 8, width: double.infinity),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: InfoCard(
+                    body: state.todayForecast,
+                    theme: theme,
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
