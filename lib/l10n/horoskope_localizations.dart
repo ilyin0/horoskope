@@ -103,6 +103,18 @@ abstract class HoroskopeLocalizations {
   /// In en, this message translates to:
   /// **'Home Page'**
   String get homePage;
+
+  /// No description provided for @compatibility.
+  ///
+  /// In en, this message translates to:
+  /// **'Compatibility'**
+  String get compatibility;
+
+  /// No description provided for @aboutYou.
+  ///
+  /// In en, this message translates to:
+  /// **'About You'**
+  String get aboutYou;
 }
 
 class _HoroskopeLocalizationsDelegate extends LocalizationsDelegate<HoroskopeLocalizations> {

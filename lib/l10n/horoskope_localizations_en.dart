@@ -12,4 +12,10 @@ class HoroskopeLocalizationsEn extends HoroskopeLocalizations {
 
   @override
   String get homePage => 'Home Page';
+
+  @override
+  String get compatibility => 'Compatibility';
+
+  @override
+  String get aboutYou => 'About You';
 }
