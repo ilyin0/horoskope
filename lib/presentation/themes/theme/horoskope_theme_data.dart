@@ -25,3 +25,6 @@ class HoroskopeThemeData<
     required this.buttonTheme,
   });
 }
+
+typedef HoroskopeBaseThemeData = HoroskopeThemeData<HoroskopeBaseTextThemeData,
+    HoroskopeBaseColorThemeData, HoroskopeBaseButtonThemeData>;

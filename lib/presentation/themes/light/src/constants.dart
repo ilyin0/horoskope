@@ -24,6 +24,7 @@ abstract class _AppColors {
   static const white10 = Colors.white10;
   static const brinkPink = Color(0xFFEE4469);
   static const brinkPink10 = Color(0x1AEE4469);
+  static const lightCoral = Color(0xFFF28482);
   static const isabelline = Color(0xFFF7F4F3);
   static const whiteUltra = Color(0xFFFCFBFA);
   static const transparent = Colors.transparent;

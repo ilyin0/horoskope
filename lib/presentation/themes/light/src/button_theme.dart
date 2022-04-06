@@ -141,4 +141,8 @@ class _LightHoroskopeButtonTheme implements HoroskopeButtonThemeData {
           ),
     );
   }
+
+  @override
+  HoroskopeButtonStyle tabNameStyle(bool isSelected) =>
+      getPrimaryTab(isSelected);
 }

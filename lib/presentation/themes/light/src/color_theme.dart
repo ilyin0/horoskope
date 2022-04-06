@@ -4,6 +4,17 @@ class _LightHoroskopeColorTheme implements HoroskopeColorThemeData {
   const _LightHoroskopeColorTheme();
 
   @override
-  Color get homePageMainColor => _AppColors.primaryBlue;
+  Color get primary => _AppColors.primaryBlue;
 
+  @override
+  Color get horoskopeFragmentMainColor => _AppColors.primaryBlue;
+
+  @override
+  Color get compatibilityFragmentMainColor => _AppColors.brinkPink;
+
+  @override
+  Color get aboutYouFragmentMainColor => _AppColors.lightCoral;
+
+  @override
+  Color get bottomNavigationBarBackgroundColor => _AppColors.white;
 }
