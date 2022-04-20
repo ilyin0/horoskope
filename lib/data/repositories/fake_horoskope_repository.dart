@@ -1,7 +1,7 @@
 import 'package:horoskope/domain/entities/zodiac_signs.dart';
-import 'package:horoskope/domain/repositories/astrodata_repository.dart';
+import 'package:horoskope/domain/repositories/horoskope_repository.dart';
 
-class FakeAstrodataRepository implements AstrodataRepository {
+class FakeHoroskopeRepository implements HoroskopeRepository {
   @override
   Future<String> getTodayForecast({
     required ZodiacSigns sign,

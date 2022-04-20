@@ -19,6 +19,20 @@ class HoroskopeButton extends StatelessWidget {
   })  : assert(style != null || defaultButtonTheme != null),
         super(key: key);
 
+  HoroskopeButton.expanded({
+    Key? key,
+    required Widget child,
+    VoidCallback? onTap,
+    HoroskopeButtonStyle? style,
+    HoroskopeButtonThemeData? defaultButtonTheme,
+  }) : this(
+          key: key,
+          child: Center(child: child),
+          onTap: onTap,
+          style: style,
+          defaultButtonTheme: defaultButtonTheme,
+        );
+
   @override
   Widget build(BuildContext context) {
     final defaultButtonStyle = defaultButtonTheme?.primary.buttonStyle;

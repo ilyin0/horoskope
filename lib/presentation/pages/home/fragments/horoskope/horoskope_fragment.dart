@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:horoskope/di/locator.dart';
-import 'package:horoskope/presentation/pages/home/fragments/horoskope_fragment.dart/horoskope_cubit.dart';
-import 'package:horoskope/presentation/pages/home/fragments/horoskope_fragment.dart/horoskope_state.dart';
+import 'package:horoskope/presentation/pages/home/fragments/horoskope/horoskope_cubit.dart';
+import 'package:horoskope/presentation/pages/home/fragments/horoskope/horoskope_state.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/themes/styles/horoskope_button_style.dart';
 import 'package:horoskope/presentation/widgets/elevated_card.dart';
