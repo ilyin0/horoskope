@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:horoskope/presentation/pages/auth/auth_page.dart';
 import 'package:horoskope/presentation/pages/home/home_page.dart';
 import 'package:horoskope/presentation/themes/styles/horoskope_button_style.dart';
 import 'package:horoskope/presentation/widgets/info_card.dart';

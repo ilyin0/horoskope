@@ -145,4 +145,20 @@ class _LightHoroskopeButtonTheme implements HoroskopeButtonThemeData {
   @override
   HoroskopeButtonStyle tabNameStyle(bool isSelected) =>
       getPrimaryTab(isSelected);
+
+  @override
+  HoroskopeButtonStyle get signIn => primary;
+
+  @override
+  HoroskopeButtonStyle get socialSignIn => HoroskopeButtonStyle(
+        buttonStyle: TextButton.styleFrom(
+          shape: const CircleBorder(
+            side: BorderSide(
+              width: 1,
+              color: _AppColors.secondaryGrey,
+            ),
+          ),
+          backgroundColor: _AppColors.white,
+        ),
+      );
 }
