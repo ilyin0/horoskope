@@ -17,4 +17,10 @@ class _LightHoroskopeColorTheme implements HoroskopeColorThemeData {
 
   @override
   Color get bottomNavigationBarBackgroundColor => _AppColors.white;
+
+  @override
+  Color get dividerColor => _AppColors.lightGrey;
+
+  @override
+  Color get cursorColor => _AppColors.primaryBlue;
 }

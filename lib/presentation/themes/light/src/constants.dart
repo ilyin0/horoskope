@@ -13,6 +13,21 @@ const _title3 = TextStyle(
   fontSize: 20,
 );
 const _bodyText2 = TextStyle(fontSize: 16);
+const _textField = TextStyle(
+  fontSize: 18,
+);
+final _textFieldHint = _textField.copyWith(
+  color: _AppColors.lightGrey,
+);
+const _textFieldLabel = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w500,
+  color: _AppColors.lightGrey,
+);
+const _textFieldFloatingLabel = TextStyle(
+  fontSize: 14,
+  color: _AppColors.darkElectricBlue,
+);
 
 abstract class _AppColors {
   static const primaryBlue = Color(0xFF3379AF);
@@ -21,6 +36,7 @@ abstract class _AppColors {
   static const lightGrey = Color(0xFFBCC8D1);
   static const lightGrey10 = Color(0x1ABCC8D1);
   static const white = Colors.white;
+  static const red = Colors.red;
   static const white10 = Colors.white10;
   static const brinkPink = Color(0xFFEE4469);
   static const brinkPink10 = Color(0x1AEE4469);

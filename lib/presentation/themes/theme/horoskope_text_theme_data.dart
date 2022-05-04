@@ -4,6 +4,7 @@ abstract class HoroskopeTextThemeData
     implements
         HoroskopeBaseTextThemeData,
         InfoCardTextThemeData,
-        HomePageTextThemeData {}
+        HomePageTextThemeData,
+        AuthPageTextThemeData {}
 
 abstract class HoroskopeBaseTextThemeData {}

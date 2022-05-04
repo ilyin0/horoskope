@@ -2,5 +2,13 @@
     "horoskope": "Horoskope",
     "homePage": "Home Page",
     "compatibility": "Compatibility",
-    "aboutYou": "About You"
+    "aboutYou": "About You",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "or": "Or",
+    "stillDontHaveAnAccountQuestion": "Still don't have an account?",
+    "alreadyHaveAnAccountQuestion": "Already have an account?"
 }

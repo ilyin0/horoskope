@@ -26,4 +26,17 @@ class _LightHoroskopeTextTheme implements HoroskopeTextThemeData {
 
   @override
   TextStyle get infoCardBigTitle => _title2;
+
+  @override
+  TextStyle get logoTitle => _title1.copyWith(
+        color: _AppColors.primaryBlue,
+      );
+
+  @override
+  TextStyle get textAndActionActionStyle => _bodyText2.copyWith(
+        fontWeight: FontWeight.bold,
+      );
+
+  @override
+  TextStyle get textAndActionTextStyle => _bodyText2;
 }
