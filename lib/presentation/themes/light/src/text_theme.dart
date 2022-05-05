@@ -39,4 +39,7 @@ class _LightHoroskopeTextTheme implements HoroskopeTextThemeData {
 
   @override
   TextStyle get textAndActionTextStyle => _bodyText2;
+
+  @override
+  TextStyle get formFieldName => _subtitle1;
 }

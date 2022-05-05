@@ -163,6 +163,48 @@ abstract class HoroskopeLocalizations {
   /// In en, this message translates to:
   /// **'Already have an account?'**
   String get alreadyHaveAnAccountQuestion;
+
+  /// No description provided for @whatIsYourNameQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'What is your name?'**
+  String get whatIsYourNameQuestion;
+
+  /// No description provided for @whenWereYouBornQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'When were you born?'**
+  String get whenWereYouBornQuestion;
+
+  /// No description provided for @whereWereYouBornQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Where were you born?'**
+  String get whereWereYouBornQuestion;
+
+  /// No description provided for @theTimeYouWereBorn.
+  ///
+  /// In en, this message translates to:
+  /// **'The time you were born'**
+  String get theTimeYouWereBorn;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @city.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get city;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
 }
 
 class _HoroskopeLocalizationsDelegate extends LocalizationsDelegate<HoroskopeLocalizations> {

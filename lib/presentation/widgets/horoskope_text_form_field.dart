@@ -26,6 +26,7 @@ class HoroskopeTextFormField extends StatelessWidget {
       cursorColor: colorThemeData.cursorColor,
       decoration: InputDecoration(
         labelText: labelText,
+        contentPadding: const EdgeInsets.all(16),
       ),
     );
   }

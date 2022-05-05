@@ -42,4 +42,25 @@ class HoroskopeLocalizationsEn extends HoroskopeLocalizations {
 
   @override
   String get alreadyHaveAnAccountQuestion => 'Already have an account?';
+
+  @override
+  String get whatIsYourNameQuestion => 'What is your name?';
+
+  @override
+  String get whenWereYouBornQuestion => 'When were you born?';
+
+  @override
+  String get whereWereYouBornQuestion => 'Where were you born?';
+
+  @override
+  String get theTimeYouWereBorn => 'The time you were born';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get city => 'City';
+
+  @override
+  String get next => 'Next';
 }

@@ -48,14 +48,12 @@ extension on _Auth {
   VoidCallback onButtonTap(BuildContext context) {
     switch (this) {
       case _Auth.signIn:
-        return () => Navigator.of(context).pushNamedAndRemoveUntil(
+        return () => Navigator.of(context).pushNamed(
               Routes.home,
-              (_) => false,
             );
       case _Auth.signUp:
-        return () => Navigator.of(context).pushNamedAndRemoveUntil(
-              Routes.home,
-              (_) => false,
+        return () => Navigator.of(context).pushNamed(
+              Routes.birthDataInput,
             );
     }
   }
