@@ -1,8 +1,10 @@
 {
+    "@_HOME_PAGE": "",
     "horoskope": "Horoskope",
     "homePage": "Home Page",
     "compatibility": "Compatibility",
     "aboutYou": "About You",
+    "@_AUTH_PAGES": "",
     "email": "Email",
     "password": "Password",
     "confirmPassword": "Confirm password",
@@ -11,6 +13,7 @@
     "or": "Or",
     "stillDontHaveAnAccountQuestion": "Still don't have an account?",
     "alreadyHaveAnAccountQuestion": "Already have an account?",
+    "@_ONBOARDING_PAGE": "",
     "whatIsYourNameQuestion": "What is your name?",
     "whenWereYouBornQuestion": "When were you born?",
     "whereWereYouBornQuestion": "Where were you born?",
@@ -18,5 +21,9 @@
     "name": "Name",
     "city": "City",
     "next": "Next",
-    "select": "Select"
+    "select": "Select",
+    "@_COMPATIBILITY_FRAGMENT": "",
+    "addFriend": "Add Friend",
+    "checkOutTheCompatibility": "Check out the compatibility!",
+    "checkOutTheCompatibilityDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor, eget efficitur nibh pharetra eget. Maecenas ultrices sagittis risus, vitae venenatis elit volutpat quis. In id feugiat nisl"
 }

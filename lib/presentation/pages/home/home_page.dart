@@ -95,7 +95,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       _HomePageFragmentModel(
-        fragment: CompatibilityFragment(),
+        fragment: CompatibilityFragment(theme: theme),
         title: context.localizations.compatibility,
         titleStyle: theme.textTheme.compatibilityFragmentTitle,
         mainColor: theme.colorTheme.compatibilityFragmentMainColor,

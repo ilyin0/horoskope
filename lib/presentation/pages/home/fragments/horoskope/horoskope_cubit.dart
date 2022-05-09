@@ -16,7 +16,7 @@ class HoroskopeCubit extends Cubit<HoroskopeState> {
 
   void _init() async {
     final todayForecast = await _astrodataRepository.getTodayForecast(
-      sign: ZodiacSigns.aries,
+      sign: ZodiacSign.aries,
       dateTime: DateTime.now(),
     );
     emit(

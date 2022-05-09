@@ -1,15 +1,21 @@
+import 'package:horoskope/domain/entities/zodiac_signs.dart';
+
 class Compatibility {
   final String name;
-  final String? shortDescription;
   final int romanticCompatibility;
   final int friendshipCompatibility;
-  final Map<String, String> compatibilityItems;
+  final ZodiacSign partnerZodiacSign;
+  final Map<String, String> romanticCompatibilityItems;
+  final Map<String, String> friendshipCompatibilityItems;
+  final String? shortDescription;
 
   Compatibility({
     required this.name,
     required this.romanticCompatibility,
     required this.friendshipCompatibility,
-    required this.compatibilityItems,
+    required this.partnerZodiacSign,
+    this.romanticCompatibilityItems = const {},
+    this.friendshipCompatibilityItems = const {},
     this.shortDescription,
   });
 }

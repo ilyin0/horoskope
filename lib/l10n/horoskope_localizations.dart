@@ -211,6 +211,24 @@ abstract class HoroskopeLocalizations {
   /// In en, this message translates to:
   /// **'Select'**
   String get select;
+
+  /// No description provided for @addFriend.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Friend'**
+  String get addFriend;
+
+  /// No description provided for @checkOutTheCompatibility.
+  ///
+  /// In en, this message translates to:
+  /// **'Check out the compatibility!'**
+  String get checkOutTheCompatibility;
+
+  /// No description provided for @checkOutTheCompatibilityDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor, eget efficitur nibh pharetra eget. Maecenas ultrices sagittis risus, vitae venenatis elit volutpat quis. In id feugiat nisl'**
+  String get checkOutTheCompatibilityDescription;
 }
 
 class _HoroskopeLocalizationsDelegate extends LocalizationsDelegate<HoroskopeLocalizations> {

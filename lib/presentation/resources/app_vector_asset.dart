@@ -7,6 +7,7 @@ abstract class AppVectorAsset {
   static const horoskopeLogo = 'assets/icons/horoskope_logo.svg';
   static const google = 'assets/icons/google.svg';
   static const apple = 'assets/icons/apple.svg';
+  static const arrowRight = 'assets/icons/arrow_right.svg';
 
   // Zodiac signs
   static const aquarius = 'assets/icons/aquarius.svg';

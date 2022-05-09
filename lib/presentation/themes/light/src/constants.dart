@@ -26,6 +26,11 @@ const _textFieldFloatingLabel = TextStyle(
   fontSize: 14,
   color: _AppColors.darkElectricBlue,
 );
+const _circleAvatar = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.bold,
+  color: _AppColors.white,
+);
 
 abstract class _AppColors {
   static const primaryBlue = Color(0xFF3379AF);

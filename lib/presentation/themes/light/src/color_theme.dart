@@ -26,4 +26,13 @@ class _LightHoroskopeColorTheme implements HoroskopeColorThemeData {
 
   @override
   Color get cupertinoDatePickerBackground => _AppColors.white;
+
+  @override
+  Color get compatibilityCircleAvatarBackgroundColor => _AppColors.white;
+
+  @override
+  Color get compatibilityCircleAvatarBorderColor => _AppColors.isabelline;
+
+  @override
+  Color get compatibilityCircleAvatarColor => _AppColors.brinkPink;
 }

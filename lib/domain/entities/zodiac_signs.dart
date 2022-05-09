@@ -1,4 +1,4 @@
-enum ZodiacSigns {
+enum ZodiacSign {
   aries,
   taurus,
   gemini,
