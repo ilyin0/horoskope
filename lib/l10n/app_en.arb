@@ -17,5 +17,6 @@
     "theTimeYouWereBorn": "The time you were born",
     "name": "Name",
     "city": "City",
-    "next": "Next"
+    "next": "Next",
+    "select": "Select"
 }

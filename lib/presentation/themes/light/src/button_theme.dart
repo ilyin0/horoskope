@@ -65,6 +65,16 @@ class _LightHoroskopeButtonTheme implements HoroskopeButtonThemeData {
         ),
       );
 
+  @override
+  HoroskopeButtonStyle get flat => _base.copyWith(
+        buttonStyle: _baseWithPadding.buttonStyle.copyWith(
+          foregroundColor: MaterialStateProperty.all(_AppColors.primaryBlue),
+          backgroundColor: MaterialStateProperty.all(_AppColors.white),
+          overlayColor: MaterialStateProperty.all(_AppColors.lightGrey10),
+          shadowColor: MaterialStateProperty.all(_AppColors.transparent),
+        ),
+      );
+
   HoroskopeButtonStyle get _tab => _base.copyWith(
         borderRadius: 20,
         buttonStyle: _base.buttonStyle.copyWith(

@@ -5,25 +5,17 @@ abstract class HoroskopeNamedTextFormFieldTextThemeData {
   TextStyle get formFieldName;
 }
 
-class HoroskopeNamedTextFormField extends HoroskopeTextFormField {
+class HoroskopeNamedTextFormField extends StatelessWidget {
   final String name;
   final HoroskopeNamedTextFormFieldTextThemeData? textTheme;
+  final HoroskopeTextFormField textFormField;
 
   const HoroskopeNamedTextFormField({
     Key? key,
     required this.name,
-    required HoroskopeTextFormFieldColorThemeData colorTheme,
+    required this.textFormField,
     this.textTheme,
-    FormFieldValidator? validator,
-    TextInputType? keyboardType,
-    String? labelText,
-  }) : super(
-          key: key,
-          colorThemeData: colorTheme,
-          validator: validator,
-          keyboardType: keyboardType,
-          labelText: labelText,
-        );
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +30,7 @@ class HoroskopeNamedTextFormField extends HoroskopeTextFormField {
           ),
         ),
         const SizedBox(height: 12),
-        super.build(context),
+        textFormField,
       ],
     );
   }

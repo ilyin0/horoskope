@@ -63,4 +63,7 @@ class HoroskopeLocalizationsEn extends HoroskopeLocalizations {
 
   @override
   String get next => 'Next';
+
+  @override
+  String get select => 'Select';
 }

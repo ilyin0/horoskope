@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:horoskope/presentation/resources/app_images_asset.dart';
 import 'package:horoskope/presentation/resources/app_vector_asset.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/utils/build_context_ext.dart';
+import 'package:horoskope/presentation/utils/validators.dart';
+import 'package:horoskope/presentation/widgets/date_picker.dart';
 import 'package:horoskope/presentation/widgets/horoskope_button.dart';
 import 'package:horoskope/presentation/widgets/horoskope_named_text_form_field.dart';
 import 'package:horoskope/presentation/widgets/horoskope_page.dart';
@@ -14,7 +17,8 @@ part 'onboarding_fields.dart';
 abstract class OnboardingPageColorThemeData
     implements
         HoroskopeTextFormFieldColorThemeData,
-        HoroskopeBaseColorThemeData {}
+        HoroskopeBaseColorThemeData,
+        CupertinoDatePickerColorThemeData {}
 
 abstract class OnboardingPageTextThemeData
     implements
@@ -22,7 +26,9 @@ abstract class OnboardingPageTextThemeData
         HoroskopeBaseTextThemeData {}
 
 abstract class OnboardingPageButtonThemeData
-    implements HoroskopeBaseButtonThemeData {}
+    implements
+        HoroskopeBaseButtonThemeData,
+        CupertinoDatePickerButtonThemeData {}
 
 typedef OnboardingPageThemeData = HoroskopeThemeData<
     OnboardingPageTextThemeData,

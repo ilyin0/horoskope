@@ -17,12 +17,6 @@ const _subtitle1 = TextStyle(
   fontWeight: FontWeight.w600,
 );
 const _bodyText2 = TextStyle(fontSize: 16);
-const _textField = TextStyle(
-  fontSize: 18,
-);
-final _textFieldHint = _textField.copyWith(
-  color: _AppColors.lightGrey,
-);
 const _textFieldLabel = TextStyle(
   fontSize: 18,
   fontWeight: FontWeight.w500,
