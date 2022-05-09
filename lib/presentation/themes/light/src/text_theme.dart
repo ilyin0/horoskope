@@ -42,4 +42,16 @@ class _LightHoroskopeTextTheme implements HoroskopeTextThemeData {
 
   @override
   TextStyle get formFieldName => _subtitle1;
+
+  @override
+  TextStyle get compatibilityCircleAvatarText => _circleAvatar;
+
+  @override
+  TextStyle get compatibilityShortCardRate => _subtitle1;
+
+  @override
+  TextStyle get compatibilityShortCardSubtitle => _bodyText2;
+
+  @override
+  TextStyle get compatibilityShortCardTitle => _subtitle1;
 }

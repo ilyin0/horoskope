@@ -4,7 +4,7 @@ import 'package:horoskope/domain/repositories/horoskope_repository.dart';
 class FakeHoroskopeRepository implements HoroskopeRepository {
   @override
   Future<String> getTodayForecast({
-    required ZodiacSigns sign,
+    required ZodiacSign sign,
     required DateTime dateTime,
   }) {
     return Future.delayed(

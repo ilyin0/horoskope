@@ -66,4 +66,13 @@ class HoroskopeLocalizationsEn extends HoroskopeLocalizations {
 
   @override
   String get select => 'Select';
+
+  @override
+  String get addFriend => 'Add Friend';
+
+  @override
+  String get checkOutTheCompatibility => 'Check out the compatibility!';
+
+  @override
+  String get checkOutTheCompatibilityDescription => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor, eget efficitur nibh pharetra eget. Maecenas ultrices sagittis risus, vitae venenatis elit volutpat quis. In id feugiat nisl';
 }
