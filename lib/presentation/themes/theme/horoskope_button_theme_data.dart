@@ -4,14 +4,15 @@ abstract class HoroskopeButtonThemeData
     implements
         HoroskopeBaseButtonThemeData,
         HomePageButtonThemeData,
-        AuthPageButtonThemeData {
+        AuthPageButtonThemeData,
+        OnboardingPageButtonThemeData {}
+
+abstract class HoroskopeBaseButtonThemeData {
   HoroskopeButtonStyle get primary;
   HoroskopeButtonStyle get secondary1;
   HoroskopeButtonStyle get secondary2;
   HoroskopeButtonStyle get disabled;
-}
-
-abstract class HoroskopeBaseButtonThemeData {
+  HoroskopeButtonStyle get flat;
   HoroskopeButtonStyle getPrimaryTab(bool isSelected);
   HoroskopeButtonStyle getPrimaryBigTab(bool isSelected);
   HoroskopeButtonStyle getSecondaryTab(bool isSelected);

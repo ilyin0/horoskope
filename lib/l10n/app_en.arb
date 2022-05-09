@@ -10,5 +10,13 @@
     "signUp": "Sign Up",
     "or": "Or",
     "stillDontHaveAnAccountQuestion": "Still don't have an account?",
-    "alreadyHaveAnAccountQuestion": "Already have an account?"
+    "alreadyHaveAnAccountQuestion": "Already have an account?",
+    "whatIsYourNameQuestion": "What is your name?",
+    "whenWereYouBornQuestion": "When were you born?",
+    "whereWereYouBornQuestion": "Where were you born?",
+    "theTimeYouWereBorn": "The time you were born",
+    "name": "Name",
+    "city": "City",
+    "next": "Next",
+    "select": "Select"
 }

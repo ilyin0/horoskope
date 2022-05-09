@@ -19,7 +19,7 @@ final InputDecorationTheme _inputDecorationTheme = InputDecorationTheme(
   errorBorder: _inputBorder.copyWith(
     borderSide: const BorderSide(color: _AppColors.red),
   ),
-  hintStyle: _textFieldHint,
+  hintStyle: _textFieldLabel,
   filled: true,
   fillColor: _AppColors.white,
   labelStyle: _textFieldLabel,

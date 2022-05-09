@@ -23,4 +23,7 @@ class _LightHoroskopeColorTheme implements HoroskopeColorThemeData {
 
   @override
   Color get cursorColor => _AppColors.primaryBlue;
+
+  @override
+  Color get cupertinoDatePickerBackground => _AppColors.white;
 }
