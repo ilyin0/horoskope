@@ -35,4 +35,25 @@ class _LightHoroskopeColorTheme implements HoroskopeColorThemeData {
 
   @override
   Color get compatibilityCircleAvatarColor => _AppColors.brinkPink;
+
+  @override
+  Color get aboutYouChartCardBackground => _AppColors.isabelline;
+
+  @override
+  Color get aboutYouChartCardShadow => _AppColors.lightCoral;
+
+  @override
+  Color get aboutYouChartLoadingIndicator => _AppColors.lightCoral;
+
+  @override
+  Color get aboutYouEmptyChartCardBackground => _AppColors.white;
+
+  @override
+  Color get aboutYouEmptyChartCardShadow => _AppColors.lightGrey;
+
+  @override
+  Color get aboutYouLoadingChartCardBackground => _AppColors.whiteUltra;
+
+  @override
+  Color get aboutYouLoadingChartCardShadow => _AppColors.lightGrey;
 }
