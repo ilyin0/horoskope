@@ -54,4 +54,7 @@ class _LightHoroskopeTextTheme implements HoroskopeTextThemeData {
 
   @override
   TextStyle get compatibilityShortCardTitle => _subtitle1;
+
+  @override
+  TextStyle get chartsTitle => _title2;
 }

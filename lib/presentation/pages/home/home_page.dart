@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:horoskope/di/locator.dart';
+import 'package:horoskope/presentation/pages/home/fragments/about_you/about_you_frament.dart';
 import 'package:horoskope/presentation/pages/home/fragments/compatibility/compatibility_fragment.dart';
 import 'package:horoskope/presentation/pages/home/fragments/horoskope/horoskope_fragment.dart';
 import 'package:horoskope/presentation/resources/app_images_asset.dart';
@@ -116,6 +117,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       _HomePageFragmentModel(
+        fragment: AboutYouFragment(theme: HoroskopeTheme.of(context)),
         title: context.localizations.aboutYou,
         titleStyle: theme.textTheme.aboutYouFragmentTitle,
         mainColor: theme.colorTheme.aboutYouFragmentMainColor,

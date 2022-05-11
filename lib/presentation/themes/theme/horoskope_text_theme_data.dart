@@ -5,6 +5,7 @@ abstract class HoroskopeTextThemeData
         HoroskopeBaseTextThemeData,
         InfoCardTextThemeData,
         HomePageTextThemeData,
+        AboutYouFragmentTextThemeData,
         AuthPageTextThemeData,
         OnboardingPageTextThemeData {}
 

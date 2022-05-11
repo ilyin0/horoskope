@@ -4,7 +4,8 @@ abstract class HoroskopeColorThemeData
     implements
         HomePageColorThemeData,
         AuthPageColorThemeData,
-        OnboardingPageColorThemeData {}
+        OnboardingPageColorThemeData,
+        AboutYouFragmentColorThemeData {}
 
 abstract class HoroskopeBaseColorThemeData {
   Color get primary;
