@@ -10,7 +10,7 @@ abstract class HomePageColorThemeData
 }
 
 abstract class HomePageTextThemeData
-    implements InfoCardTextThemeData, CompatibilityFragmentTextThemeData {
+    implements CompatibilityFragmentTextThemeData {
   TextStyle get horoskopeFragmentTitle;
   TextStyle get compatibilityFragmentTitle;
   TextStyle get aboutYouFragmentTitle;

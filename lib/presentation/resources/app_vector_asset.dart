@@ -8,18 +8,4 @@ abstract class AppVectorAsset {
   static const google = 'assets/icons/google.svg';
   static const apple = 'assets/icons/apple.svg';
   static const arrowRight = 'assets/icons/arrow_right.svg';
-
-  // Zodiac signs
-  static const aquarius = 'assets/icons/aquarius.svg';
-  static const aries = 'assets/icons/aries.svg';
-  static const cancer = 'assets/icons/cancer.svg';
-  static const capricorn = 'assets/icons/capricorn.svg';
-  static const gemini = 'asseta/icons/gemini.svg';
-  static const leo = 'asseta/icons/leo.svg';
-  static const libra = 'asseta/icons/libra.svg';
-  static const pisces = 'asseta/icons/pisces.svg';
-  static const sagittarius = 'asseta/icons/sagittarius.svg';
-  static const scorpio = 'asseta/icons/scorpio.svg';
-  static const taurus = 'asseta/icons/taurus.svg';
-  static const virgo = 'asseta/icons/virgo.svg';
 }

@@ -9,6 +9,7 @@ abstract class Routes {
   static const signUp = 'signUp';
   static const home = 'home';
   static const birthDataInput = 'birthDataInput';
+  static const compatibilityDetails = 'compatibilityDetails';
 }
 
 final Map<String, Widget Function(BuildContext)> appRoutes = {

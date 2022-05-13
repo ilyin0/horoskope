@@ -20,8 +20,10 @@ abstract class AboutYouFragmentColorThemeData
 }
 
 abstract class AboutYouFragmentTextThemeData
-    implements HoroskopeBaseTextThemeData, InfoCardTextThemeData {
+    implements HoroskopeBaseTextThemeData {
   TextStyle get chartsTitle;
+  TextStyle get aboutYouCardTitle;
+  TextStyle get aboutYouCardBody;
 }
 
 typedef AboutYouFragmentThemeData = HoroskopeThemeData<
@@ -173,9 +175,12 @@ class _EmptyCharts extends StatelessWidget {
         title: 'Working on this!',
         body:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor, eget efficitur nibh pharetra eget. Maecenas ultrices sagittis risus, vitae venenatis elit volutpat quis. In id feugiat nisl',
-        theme: theme,
-        color: theme.colorTheme.aboutYouEmptyChartCardBackground,
-        shadowColor: theme.colorTheme.aboutYouEmptyChartCardShadow,
+        style: InfoCardStyle(
+          color: theme.colorTheme.aboutYouEmptyChartCardBackground,
+          shadowColor: theme.colorTheme.aboutYouEmptyChartCardShadow,
+          title: theme.textTheme.aboutYouCardTitle,
+          body: theme.textTheme.aboutYouCardBody,
+        ),
       ),
     );
   }
@@ -205,9 +210,12 @@ class _DataCharts extends StatelessWidget {
                     title: e.key,
                     body: e.value,
                     width: 160,
-                    color: theme.colorTheme.aboutYouChartCardBackground,
-                    shadowColor: theme.colorTheme.aboutYouChartCardShadow,
-                    theme: theme,
+                    style: InfoCardStyle(
+                      color: theme.colorTheme.aboutYouChartCardBackground,
+                      shadowColor: theme.colorTheme.aboutYouChartCardShadow,
+                      title: theme.textTheme.aboutYouCardTitle,
+                      body: theme.textTheme.aboutYouCardBody,
+                    ),
                   ),
                 ),
               )

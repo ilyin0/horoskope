@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:horoskope/presentation/pages/auth/auth_page.dart';
+import 'package:horoskope/presentation/pages/compatibility_details/compatibility_details_page.dart';
 import 'package:horoskope/presentation/pages/home/fragments/about_you/about_you_frament.dart';
+import 'package:horoskope/presentation/pages/home/fragments/horoskope/horoskope_fragment.dart';
 import 'package:horoskope/presentation/pages/home/home_page.dart';
 import 'package:horoskope/presentation/pages/onboarding/onboarding_page.dart';
 import 'package:horoskope/presentation/themes/styles/horoskope_button_style.dart';
-import 'package:horoskope/presentation/widgets/info_card.dart';
 
 part 'theme/horoskope_button_theme_data.dart';
 part 'theme/horoskope_color_theme_data.dart';

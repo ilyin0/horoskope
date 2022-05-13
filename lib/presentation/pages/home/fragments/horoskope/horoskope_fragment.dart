@@ -9,9 +9,15 @@ import 'package:horoskope/presentation/widgets/elevated_card.dart';
 import 'package:horoskope/presentation/widgets/info_card.dart';
 import 'package:horoskope/presentation/widgets/tab_names.dart';
 
+abstract class HoroskopeFragmentTextThemeData
+    implements HoroskopeBaseTextThemeData {
+  TextStyle get forecastBody;
+}
+
 abstract class HoroskopeFragmentColorThemeData
     implements HoroskopeBaseColorThemeData {
   Color get horoskopeFragmentMainColor;
+  Color get horoskopeFragmentCardColor;
 }
 
 abstract class HoroskopeFragmentButtonThemeData
@@ -20,20 +26,17 @@ abstract class HoroskopeFragmentButtonThemeData
 }
 
 typedef HoroskopeFragmentThemeData = HoroskopeThemeData<
-    HoroskopeBaseTextThemeData,
+    HoroskopeFragmentTextThemeData,
     HoroskopeFragmentColorThemeData,
     HoroskopeFragmentButtonThemeData>;
 
 class HoroskopeFragment extends StatelessWidget {
-  final HoroskopeFragmentThemeData? theme;
-  final HoroskopeBaseThemeData? defaultTheme;
+  final HoroskopeFragmentThemeData theme;
 
   const HoroskopeFragment({
     Key? key,
-    this.theme,
-    this.defaultTheme,
-  })  : assert(theme != null || defaultTheme != null),
-        super(key: key);
+    required this.theme,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +47,7 @@ class HoroskopeFragment extends StatelessWidget {
           const SizedBox(height: 8),
           TabNames.fromNames(
             names: const ['Today', 'Tomorrow', 'Week', 'Month'],
-            style: theme?.buttonTheme.tabNameStyle ??
-                defaultTheme!.buttonTheme.getPrimaryTab,
+            style: theme.buttonTheme.tabNameStyle,
           ),
           const SizedBox(height: 8, width: double.infinity),
           Padding(
@@ -61,8 +63,7 @@ class HoroskopeFragment extends StatelessWidget {
                       height: 200,
                       child: Center(
                         child: CircularProgressIndicator(
-                          color: theme?.colorTheme.horoskopeFragmentMainColor ??
-                              defaultTheme?.colorTheme.primary,
+                          color: theme.colorTheme.horoskopeFragmentMainColor,
                         ),
                       ),
                     ),
@@ -70,7 +71,11 @@ class HoroskopeFragment extends StatelessWidget {
                 }
                 return InfoCard(
                   body: forecast,
-                  theme: HoroskopeTheme.of(context),
+                  style: InfoCardStyle(
+                    color: theme.colorTheme.horoskopeFragmentCardColor,
+                    shadowColor: theme.colorTheme.horoskopeFragmentMainColor,
+                    body: theme.textTheme.forecastBody,
+                  ),
                 );
               },
             ),

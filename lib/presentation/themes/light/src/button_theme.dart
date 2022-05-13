@@ -171,4 +171,18 @@ class _LightHoroskopeButtonTheme implements HoroskopeButtonThemeData {
           backgroundColor: _AppColors.white,
         ),
       );
+
+  @override
+  HoroskopeButtonStyle getRomanticCompatibilityTab(bool isSelected) =>
+      getSecondaryBigTab(isSelected);
+
+  @override
+  HoroskopeButtonStyle getFriendshipCompatibilityTab(bool isSelected) =>
+      getPrimaryBigTab(isSelected);
+
+  @override
+  HoroskopeButtonStyle get romanticCompatibilityBackButton => secondary2;
+
+  @override
+  HoroskopeButtonStyle get friendshipCompatibilityBackButton => secondary1;
 }

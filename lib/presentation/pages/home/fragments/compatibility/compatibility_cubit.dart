@@ -15,7 +15,7 @@ class CompatibilityCubit extends Cubit<CompatibilityState> {
 
   void _init() async {
     final compatibilityItems =
-        await _compatibilityRepository.getAllCompatibilities(0);
+        await _compatibilityRepository.getAllShortCompatibilities(0);
     emit(
       state.copyWith(
         compatibilityItems: compatibilityItems,

@@ -3,10 +3,11 @@ part of '../horoskope_theme.dart';
 abstract class HoroskopeTextThemeData
     implements
         HoroskopeBaseTextThemeData,
-        InfoCardTextThemeData,
         HomePageTextThemeData,
+        HoroskopeFragmentTextThemeData,
         AboutYouFragmentTextThemeData,
         AuthPageTextThemeData,
-        OnboardingPageTextThemeData {}
+        OnboardingPageTextThemeData,
+        CompatibilityDetailsPageTextThemeData {}
 
 abstract class HoroskopeBaseTextThemeData {}

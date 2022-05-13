@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:horoskope/presentation/resources/app_images_asset.dart';
 import 'package:horoskope/presentation/resources/app_vector_asset.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
-import 'package:horoskope/presentation/utils/build_context_ext.dart';
+import 'package:horoskope/presentation/utils/extensions/build_context_ext.dart';
 import 'package:horoskope/presentation/utils/validators.dart';
 import 'package:horoskope/presentation/widgets/date_picker.dart';
 import 'package:horoskope/presentation/widgets/horoskope_button.dart';

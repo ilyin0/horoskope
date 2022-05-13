@@ -8,10 +8,9 @@ import 'package:horoskope/presentation/pages/home/fragments/horoskope/horoskope_
 import 'package:horoskope/presentation/resources/app_images_asset.dart';
 import 'package:horoskope/presentation/resources/app_vector_asset.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
-import 'package:horoskope/presentation/utils/build_context_ext.dart';
+import 'package:horoskope/presentation/utils/extensions/build_context_ext.dart';
 import 'package:horoskope/presentation/widgets/app_bars/horoskope_title_app_bar.dart';
 import 'package:horoskope/presentation/widgets/horoskope_page.dart';
-import 'package:horoskope/presentation/widgets/info_card.dart';
 import 'package:injectable/injectable.dart';
 
 part 'home_cubit.dart';
@@ -81,7 +80,7 @@ class HomePage extends StatelessWidget {
         backgroundImage: const AssetImage(
           AppImagesAsset.horoskopeBackground,
         ),
-        fragment: HoroskopeFragment(theme: theme),
+        fragment: HoroskopeFragment(theme: HoroskopeTheme.of(context)),
         bottomNavigationBarItem: BottomNavigationBarItem(
           label: context.localizations.horoskope,
           icon: SvgPicture.asset(

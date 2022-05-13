@@ -1,35 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:horoskope/presentation/themes/horoskope_theme.dart';
-import 'package:horoskope/presentation/utils/default_values.dart' as defaults;
 import 'package:horoskope/presentation/widgets/elevated_card.dart';
 
-abstract class InfoCardTextThemeData implements HoroskopeBaseTextThemeData {
-  TextStyle get infoCardBigTitle;
-  TextStyle get infoCardTitle;
-  TextStyle get infoCardBody;
-}
+class InfoCardStyle {
+  final Color color;
+  final Color shadowColor;
+  final TextStyle? title;
+  final TextStyle? body;
 
-typedef InfoCardThemeData = HoroskopeThemeData<InfoCardTextThemeData,
-    HoroskopeBaseColorThemeData, HoroskopeBaseButtonThemeData>;
+  InfoCardStyle({
+    required this.color,
+    required this.shadowColor,
+    this.title,
+    this.body,
+  });
+}
 
 class InfoCard extends StatelessWidget {
   final String body;
   final String? title;
-  final Color color;
-  final Color shadowColor;
   final double width;
-  final bool big;
-  final InfoCardThemeData theme;
+  final InfoCardStyle style;
 
   const InfoCard({
     Key? key,
     required this.body,
-    required this.theme,
+    required this.style,
     this.title,
-    this.color = defaults.infoCardColor,
-    this.shadowColor = defaults.infoCardShadowColor,
     this.width = double.infinity,
-    this.big = true,
   }) : super(key: key);
 
   @override
@@ -37,26 +34,18 @@ class InfoCard extends StatelessWidget {
     final title = this.title;
 
     return ElevatedCard(
-      color: color,
-      shadowColor: shadowColor,
+      color: style.color,
+      shadowColor: style.shadowColor,
       width: width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           if (title != null) ...[
-            Text(
-              title,
-              style: big
-                  ? theme.textTheme.infoCardBigTitle
-                  : theme.textTheme.infoCardTitle,
-            ),
+            Text(title, style: style.title),
             const SizedBox(height: 8)
           ],
-          Text(
-            body,
-            style: theme.textTheme.infoCardBody,
-          ),
+          Text(body, style: style.body),
         ],
       ),
     );
