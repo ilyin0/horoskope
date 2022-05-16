@@ -8,6 +8,9 @@ class HoroskopeLocalizationsEn extends HoroskopeLocalizations {
   HoroskopeLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get back => 'Back';
+
+  @override
   String get horoskope => 'Horoskope';
 
   @override

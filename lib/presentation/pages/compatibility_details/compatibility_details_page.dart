@@ -8,6 +8,7 @@ import 'package:horoskope/presentation/pages/compatibility_details/compatibility
 import 'package:horoskope/presentation/resources/app_images_asset.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/themes/styles/horoskope_button_style.dart';
+import 'package:horoskope/presentation/utils/extensions/build_context_ext.dart';
 import 'package:horoskope/presentation/utils/extensions/zodiac_sign_ext.dart';
 import 'package:horoskope/presentation/widgets/bouncing_scroll_view.dart';
 import 'package:horoskope/presentation/widgets/horoskope_button.dart';
@@ -120,7 +121,7 @@ class _CompatibilityDetailsPageState extends State<CompatibilityDetailsPage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: HoroskopeButton(
-            child: const Text('Back'),
+            child: Text(context.localizations.back),
             onTap: Navigator.of(context).pop,
             style: _getBackButtonStyle(state.tab),
           ),
