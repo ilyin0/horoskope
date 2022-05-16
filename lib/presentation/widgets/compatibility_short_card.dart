@@ -30,6 +30,7 @@ class CompatibilityShortCard extends StatelessWidget {
   final String? subtitle;
   final num? rate;
   final CompatibilityShortCartThemeData theme;
+  final VoidCallback? onTap;
 
   const CompatibilityShortCard({
     Key? key,
@@ -37,6 +38,7 @@ class CompatibilityShortCard extends StatelessWidget {
     required this.theme,
     this.subtitle,
     this.rate,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -45,6 +47,7 @@ class CompatibilityShortCard extends StatelessWidget {
     final rate = this.rate;
 
     return ElevatedCard(
+      onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -2,19 +2,27 @@ import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:horoskope/di/locator.dart';
+import 'package:horoskope/presentation/pages/compatibility_details/compatibility_details_page.dart';
 import 'package:horoskope/presentation/pages/home/fragments/compatibility/compatibility_cubit.dart';
 import 'package:horoskope/presentation/pages/home/fragments/compatibility/compatibility_state.dart';
+import 'package:horoskope/presentation/routes.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
-import 'package:horoskope/presentation/utils/build_context_ext.dart';
+import 'package:horoskope/presentation/utils/extensions/build_context_ext.dart';
 import 'package:horoskope/presentation/widgets/compatibility_short_card.dart';
 import 'package:horoskope/presentation/widgets/horoskope_button.dart';
 import 'package:horoskope/presentation/widgets/info_card.dart';
 
 abstract class CompatibilityFragmentColorThemeData
-    implements CompatibilityShortCardColorThemeData {}
+    implements CompatibilityShortCardColorThemeData {
+  Color get welcomeCompatibilityCard;
+  Color get welcomeCompatibilityCardShadow;
+}
 
 abstract class CompatibilityFragmentTextThemeData
-    implements CompatibilityShortCardTextThemeData {}
+    implements CompatibilityShortCardTextThemeData {
+  TextStyle get welcomeCompatibilityCardTitle;
+  TextStyle get welcomeCompatibilityCardBody;
+}
 
 typedef CompatibilityFragmentThemeData = HoroskopeThemeData<
     CompatibilityFragmentTextThemeData,
@@ -78,6 +86,14 @@ class _CompatibilityFragmentState extends State<CompatibilityFragment> {
                         horizontal: 20,
                       ),
                       child: CompatibilityShortCard(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                            Routes.compatibilityDetails,
+                            arguments: CompatibilityDetailsPageArguments(
+                              compatibilityId: item.id,
+                            ),
+                          );
+                        },
                         title: item.name,
                         subtitle: item.shortDescription,
                         rate: item.romanticCompatibility,
@@ -110,7 +126,12 @@ class _CompatibilityFragmentState extends State<CompatibilityFragment> {
     return InfoCard(
       title: context.localizations.checkOutTheCompatibility,
       body: context.localizations.checkOutTheCompatibilityDescription,
-      theme: HoroskopeTheme.of(context),
+      style: InfoCardStyle(
+        color: widget.theme.colorTheme.welcomeCompatibilityCard,
+        shadowColor: widget.theme.colorTheme.welcomeCompatibilityCardShadow,
+        title: widget.theme.textTheme.welcomeCompatibilityCardTitle,
+        body: widget.theme.textTheme.welcomeCompatibilityCardBody,
+      ),
     );
   }
 }

@@ -92,6 +92,12 @@ abstract class HoroskopeLocalizations {
     Locale('en')
   ];
 
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
+
   /// No description provided for @horoskope.
   ///
   /// In en, this message translates to:

@@ -19,15 +19,6 @@ class _LightHoroskopeTextTheme implements HoroskopeTextThemeData {
       );
 
   @override
-  TextStyle get infoCardBody => _bodyText2;
-
-  @override
-  TextStyle get infoCardTitle => _title3;
-
-  @override
-  TextStyle get infoCardBigTitle => _title2;
-
-  @override
   TextStyle get logoTitle => _title1.copyWith(
         color: _AppColors.primaryBlue,
       );
@@ -57,4 +48,31 @@ class _LightHoroskopeTextTheme implements HoroskopeTextThemeData {
 
   @override
   TextStyle get chartsTitle => _title2;
+
+  @override
+  TextStyle get compatibilityDetailsPersonName => _title2;
+
+  @override
+  TextStyle get compatibilityDetailsRate => _subtitle1;
+
+  @override
+  TextStyle get welcomeCompatibilityCardBody => _bodyText2;
+
+  @override
+  TextStyle get welcomeCompatibilityCardTitle => _title3;
+
+  @override
+  TextStyle get compatibilityDetailsCardBody => _bodyText2;
+
+  @override
+  TextStyle get compatibilityDetailsCardTitle => _title2;
+
+  @override
+  TextStyle get aboutYouCardBody => _bodyText2;
+
+  @override
+  TextStyle get aboutYouCardTitle => _title3;
+
+  @override
+  TextStyle get forecastBody => _bodyText2;
 }

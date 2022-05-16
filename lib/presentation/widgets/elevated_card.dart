@@ -8,6 +8,7 @@ class ElevatedCard extends StatelessWidget {
   final double width;
   final EdgeInsets padding;
   final BorderRadius borderRadius;
+  final VoidCallback? onTap;
 
   const ElevatedCard({
     Key? key,
@@ -17,24 +18,29 @@ class ElevatedCard extends StatelessWidget {
     this.width = double.infinity,
     this.padding = const EdgeInsets.all(20),
     this.borderRadius = const BorderRadius.all(Radius.circular(8)),
+    this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: child,
-      width: width,
-      padding: padding,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: borderRadius,
-        boxShadow: [
-          BoxShadow(
-            color: shadowColor,
-            offset: const Offset(2, 2),
-            blurRadius: 4,
-          ),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: kThemeAnimationDuration,
+        child: child,
+        width: width,
+        padding: padding,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: borderRadius,
+          boxShadow: [
+            BoxShadow(
+              color: shadowColor,
+              offset: const Offset(2, 2),
+              blurRadius: 4,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -5,7 +5,7 @@ import 'package:horoskope/presentation/resources/app_vector_asset.dart';
 import 'package:horoskope/presentation/routes.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/themes/styles/horoskope_button_style.dart';
-import 'package:horoskope/presentation/utils/build_context_ext.dart';
+import 'package:horoskope/presentation/utils/extensions/build_context_ext.dart';
 import 'package:horoskope/presentation/widgets/horoskope_button.dart';
 import 'package:horoskope/presentation/widgets/horoskope_page.dart';
 import 'package:horoskope/presentation/widgets/horoskope_text_form_field.dart';

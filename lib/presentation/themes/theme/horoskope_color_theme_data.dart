@@ -5,7 +5,8 @@ abstract class HoroskopeColorThemeData
         HomePageColorThemeData,
         AuthPageColorThemeData,
         OnboardingPageColorThemeData,
-        AboutYouFragmentColorThemeData {}
+        AboutYouFragmentColorThemeData,
+        CompatibilityDetailsPageColorThemeData {}
 
 abstract class HoroskopeBaseColorThemeData {
   Color get primary;

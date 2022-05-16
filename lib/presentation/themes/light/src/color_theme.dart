@@ -10,6 +10,9 @@ class _LightHoroskopeColorTheme implements HoroskopeColorThemeData {
   Color get horoskopeFragmentMainColor => _AppColors.primaryBlue;
 
   @override
+  Color get horoskopeFragmentCardColor => _AppColors.white;
+
+  @override
   Color get compatibilityFragmentMainColor => _AppColors.brinkPink;
 
   @override
@@ -56,4 +59,31 @@ class _LightHoroskopeColorTheme implements HoroskopeColorThemeData {
 
   @override
   Color get aboutYouLoadingChartCardShadow => _AppColors.lightGrey;
+
+  @override
+  Color get background => _AppColors.white;
+
+  @override
+  Color get friendshipCard => _AppColors.isabelline;
+
+  @override
+  Color get friendshipCardShadow => _AppColors.primaryBlue;
+
+  @override
+  Color get friendshipCompatibility => _AppColors.primaryBlue;
+
+  @override
+  Color get romanticCard => _AppColors.isabelline;
+
+  @override
+  Color get romanticCardShadow => _AppColors.brinkPink;
+
+  @override
+  Color get romanticCompatibility => _AppColors.brinkPink;
+
+  @override
+  Color get welcomeCompatibilityCard => _AppColors.white;
+
+  @override
+  Color get welcomeCompatibilityCardShadow => _AppColors.lightGrey;
 }

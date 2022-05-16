@@ -5,7 +5,8 @@ abstract class HoroskopeButtonThemeData
         HoroskopeBaseButtonThemeData,
         HomePageButtonThemeData,
         AuthPageButtonThemeData,
-        OnboardingPageButtonThemeData {}
+        OnboardingPageButtonThemeData,
+        CompatibilityDetailsPageButtonThemeData {}
 
 abstract class HoroskopeBaseButtonThemeData {
   HoroskopeButtonStyle get primary;

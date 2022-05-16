@@ -1,14 +1,14 @@
-import 'package:horoskope/domain/entities/compatibility.dart';
+import 'package:horoskope/domain/entities/short_compatibility.dart';
 
 class CompatibilityState {
-  final List<Compatibility>? compatibilityItems;
+  final List<ShortCompatibility>? compatibilityItems;
 
   CompatibilityState({
     this.compatibilityItems,
   });
 
   CompatibilityState copyWith({
-    List<Compatibility>? compatibilityItems,
+    List<ShortCompatibility>? compatibilityItems,
   }) {
     return CompatibilityState(
       compatibilityItems: compatibilityItems ?? this.compatibilityItems,

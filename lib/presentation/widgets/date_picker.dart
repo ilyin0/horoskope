@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
-import 'package:horoskope/presentation/utils/build_context_ext.dart';
+import 'package:horoskope/presentation/utils/extensions/build_context_ext.dart';
 import 'package:horoskope/presentation/widgets/horoskope_button.dart';
 
 abstract class CupertinoDatePickerColorThemeData
