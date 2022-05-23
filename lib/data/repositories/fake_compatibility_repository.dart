@@ -12,7 +12,7 @@ class FakeCompatibilityRepository implements CompatibilityRepository {
   @override
   Future<List<ShortCompatibility>> getAllShortCompatibilities(int userId) {
     return Future.delayed(
-      const Duration(seconds: 0),
+      const Duration(seconds: 3),
       () => const [
         ShortCompatibility(
           id: 1,
