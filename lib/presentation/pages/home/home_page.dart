@@ -55,8 +55,8 @@ class HomePage extends StatelessWidget {
     required int activeTab,
     Color? selectedItemColor,
   }) {
-    return SizedBox(
-      height: 80,
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minHeight: 80),
       child: BottomNavigationBar(
         backgroundColor: theme.colorTheme.bottomNavigationBarBackgroundColor,
         elevation: 4,
