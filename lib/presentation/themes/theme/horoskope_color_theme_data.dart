@@ -10,4 +10,6 @@ abstract class HoroskopeColorThemeData
 
 abstract class HoroskopeBaseColorThemeData {
   Color get primary;
+
+  LinearGradient get shimmerGradient;
 }

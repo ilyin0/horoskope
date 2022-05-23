@@ -7,6 +7,8 @@ import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/widgets/bouncing_scroll_view.dart';
 import 'package:horoskope/presentation/widgets/elevated_card.dart';
 import 'package:horoskope/presentation/widgets/info_card.dart';
+import 'package:horoskope/presentation/widgets/shimmer.dart';
+import 'package:horoskope/presentation/widgets/shimmer_loading.dart';
 
 abstract class AboutYouFragmentColorThemeData
     implements HoroskopeBaseColorThemeData {
@@ -43,44 +45,47 @@ class AboutYouFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AboutYouCubit, AboutYouState>(
-      bloc: _cubit,
-      builder: (context, state) {
-        return BouncingScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text(
-                  'Your Main Personality',
-                  style: theme.textTheme.chartsTitle,
+    return Shimmer(
+      linearGradient: theme.colorTheme.shimmerGradient,
+      child: BlocBuilder<AboutYouCubit, AboutYouState>(
+        bloc: _cubit,
+        builder: (context, state) {
+          return BouncingScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    'Your Main Personality',
+                    style: theme.textTheme.chartsTitle,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              _Charts(
-                charts: state.personalityCharts,
-                theme: theme,
-              ),
-              const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text(
-                  'More Info about You',
-                  style: theme.textTheme.chartsTitle,
+                const SizedBox(height: 10),
+                _Charts(
+                  charts: state.personalityCharts,
+                  theme: theme,
                 ),
-              ),
-              const SizedBox(height: 20),
-              _Charts(
-                charts: state.additionalCharts,
-                theme: theme,
-              ),
-              const SizedBox(height: 20),
-            ],
-          ),
-        );
-      },
+                const SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    'More Info about You',
+                    style: theme.textTheme.chartsTitle,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                _Charts(
+                  charts: state.additionalCharts,
+                  theme: theme,
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
@@ -142,16 +147,19 @@ class _LoadingChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: ElevatedCard(
-        color: colorTheme.aboutYouLoadingChartCardBackground,
-        shadowColor: colorTheme.aboutYouLoadingChartCardShadow,
-        width: 160,
-        child: SizedBox(
-          height: 180,
-          child: Center(
-            child: CircularProgressIndicator(
-              color: colorTheme.aboutYouChartLoadingIndicator,
-            ),
+      child: ShimmerLoading(
+        isLoading: true,
+        child: ElevatedCard(
+          color: colorTheme.aboutYouLoadingChartCardBackground,
+          shadowColor: colorTheme.aboutYouLoadingChartCardShadow,
+          width: 160,
+          child: const SizedBox(
+            height: 180,
+            // child: Center(
+            //   child: CircularProgressIndicator(
+            //     color: colorTheme.aboutYouChartLoadingIndicator,
+            //   ),
+            // ),
           ),
         ),
       ),
