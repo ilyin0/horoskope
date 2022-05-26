@@ -150,12 +150,10 @@ class _CompatibilityDetailsPageState extends State<CompatibilityDetailsPage> {
     return _VisualBlock(
       loading: compatibility == null,
       first: CompatibilityPerson(
-        //TODO add shimmer loading
         name: compatibility?.userName ?? '',
         zodiacSign: compatibility?.userZodiacSign ?? ZodiacSign.aquarius,
       ),
       second: CompatibilityPerson(
-        //TODO add shimmer loading
         name: compatibility?.partnerName ?? '',
         zodiacSign: compatibility?.partnerZodiacSign ?? ZodiacSign.aquarius,
       ),
