@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:horoskope/presentation/pages/add_friend/add_friend_page.dart';
 import 'package:horoskope/presentation/pages/auth/auth_page.dart';
 import 'package:horoskope/presentation/pages/compatibility_details/compatibility_details_page.dart';
 import 'package:horoskope/presentation/pages/home/fragments/about_you/about_you_frament.dart';
