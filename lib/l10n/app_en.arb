@@ -26,5 +26,11 @@
     "@_COMPATIBILITY_FRAGMENT": "",
     "addFriend": "Add Friend",
     "checkOutTheCompatibility": "Check out the compatibility!",
-    "checkOutTheCompatibilityDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor, eget efficitur nibh pharetra eget. Maecenas ultrices sagittis risus, vitae venenatis elit volutpat quis. In id feugiat nisl"
+    "checkOutTheCompatibilityDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor, eget efficitur nibh pharetra eget. Maecenas ultrices sagittis risus, vitae venenatis elit volutpat quis. In id feugiat nisl",
+    "@_ADD_FRIEND_PAGE":"",
+    "whatIsYourFriendNameQuestion":"What is your friends name?",
+    "whenWasYourFriendBornQuestion": "When was your friend born?",
+    "whereWasYourFriendBornQuestion": "Where was your friend born?",
+    "theTimeYourFriendWasBorn": "The time your friend was born"
+
 }

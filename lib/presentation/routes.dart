@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:horoskope/presentation/pages/add_friend/add_friend_page.dart';
 import 'package:horoskope/presentation/pages/auth/auth_page.dart';
 import 'package:horoskope/presentation/pages/home/home_page.dart';
 import 'package:horoskope/presentation/pages/onboarding/onboarding_page.dart';
@@ -10,6 +11,7 @@ abstract class Routes {
   static const home = 'home';
   static const birthDataInput = 'birthDataInput';
   static const compatibilityDetails = 'compatibilityDetails';
+  static const addFriend = 'addFriend';
 }
 
 final Map<String, Widget Function(BuildContext)> appRoutes = {
@@ -23,6 +25,9 @@ final Map<String, Widget Function(BuildContext)> appRoutes = {
         theme: HoroskopeTheme.of(context),
       ),
   Routes.birthDataInput: (context) => OnboardingPage(
+        theme: HoroskopeTheme.of(context),
+      ),
+  Routes.addFriend: (context) => AddFriendPage(
         theme: HoroskopeTheme.of(context),
       ),
 };

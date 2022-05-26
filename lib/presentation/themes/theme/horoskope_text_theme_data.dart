@@ -8,6 +8,7 @@ abstract class HoroskopeTextThemeData
         AboutYouFragmentTextThemeData,
         AuthPageTextThemeData,
         OnboardingPageTextThemeData,
-        CompatibilityDetailsPageTextThemeData {}
+        CompatibilityDetailsPageTextThemeData,
+        AddFriendPageTextThemeData {}
 
 abstract class HoroskopeBaseTextThemeData {}

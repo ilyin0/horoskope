@@ -111,6 +111,7 @@ class _AddFriendButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: HoroskopeButton.expanded(
+        onTap: () => Navigator.of(context).pushNamed(Routes.addFriend),
         child: Text(context.localizations.addFriend),
         style: buttonTheme.secondary2,
       ),

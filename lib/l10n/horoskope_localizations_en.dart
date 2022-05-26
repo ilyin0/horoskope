@@ -78,4 +78,16 @@ class HoroskopeLocalizationsEn extends HoroskopeLocalizations {
 
   @override
   String get checkOutTheCompatibilityDescription => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor, eget efficitur nibh pharetra eget. Maecenas ultrices sagittis risus, vitae venenatis elit volutpat quis. In id feugiat nisl';
+
+  @override
+  String get whatIsYourFriendNameQuestion => 'What is your friends name?';
+
+  @override
+  String get whenWasYourFriendBornQuestion => 'When was your friend born?';
+
+  @override
+  String get whereWasYourFriendBornQuestion => 'Where was your friend born?';
+
+  @override
+  String get theTimeYourFriendWasBorn => 'The time your friend was born';
 }

@@ -235,6 +235,30 @@ abstract class HoroskopeLocalizations {
   /// In en, this message translates to:
   /// **'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor, eget efficitur nibh pharetra eget. Maecenas ultrices sagittis risus, vitae venenatis elit volutpat quis. In id feugiat nisl'**
   String get checkOutTheCompatibilityDescription;
+
+  /// No description provided for @whatIsYourFriendNameQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'What is your friends name?'**
+  String get whatIsYourFriendNameQuestion;
+
+  /// No description provided for @whenWasYourFriendBornQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'When was your friend born?'**
+  String get whenWasYourFriendBornQuestion;
+
+  /// No description provided for @whereWasYourFriendBornQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Where was your friend born?'**
+  String get whereWasYourFriendBornQuestion;
+
+  /// No description provided for @theTimeYourFriendWasBorn.
+  ///
+  /// In en, this message translates to:
+  /// **'The time your friend was born'**
+  String get theTimeYourFriendWasBorn;
 }
 
 class _HoroskopeLocalizationsDelegate extends LocalizationsDelegate<HoroskopeLocalizations> {
