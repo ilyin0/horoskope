@@ -18,7 +18,6 @@ abstract class AboutYouFragmentColorThemeData
   Color get aboutYouEmptyChartCardBackground;
   Color get aboutYouLoadingChartCardShadow;
   Color get aboutYouLoadingChartCardBackground;
-  Color get aboutYouChartLoadingIndicator;
 }
 
 abstract class AboutYouFragmentTextThemeData
@@ -46,7 +45,7 @@ class AboutYouFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer(
-      linearGradient: theme.colorTheme.shimmerGradient,
+      linearGradient: theme.colorTheme.aboutYouFragmentShimmerGradient,
       child: BlocBuilder<AboutYouCubit, AboutYouState>(
         bloc: _cubit,
         builder: (context, state) {
@@ -153,14 +152,7 @@ class _LoadingChart extends StatelessWidget {
           color: colorTheme.aboutYouLoadingChartCardBackground,
           shadowColor: colorTheme.aboutYouLoadingChartCardShadow,
           width: 160,
-          child: const SizedBox(
-            height: 180,
-            // child: Center(
-            //   child: CircularProgressIndicator(
-            //     color: colorTheme.aboutYouChartLoadingIndicator,
-            //   ),
-            // ),
-          ),
+          child: const SizedBox(height: 180),
         ),
       ),
     );

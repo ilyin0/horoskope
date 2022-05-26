@@ -16,7 +16,7 @@ class FakeNatalChartsRepository implements NatalChartsRepository {
   @override
   Future<Map<String, String>> getAdditionalCharts(int userId) {
     return Future.delayed(
-      const Duration(seconds: 222),
+      const Duration(seconds: 3),
       () => {
         // 'Mercury':
         //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor',

@@ -7,6 +7,8 @@ import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/themes/styles/horoskope_button_style.dart';
 import 'package:horoskope/presentation/widgets/elevated_card.dart';
 import 'package:horoskope/presentation/widgets/info_card.dart';
+import 'package:horoskope/presentation/widgets/shimmer.dart';
+import 'package:horoskope/presentation/widgets/shimmer_loading.dart';
 import 'package:horoskope/presentation/widgets/tab_names.dart';
 
 abstract class HoroskopeFragmentTextThemeData
@@ -18,6 +20,7 @@ abstract class HoroskopeFragmentColorThemeData
     implements HoroskopeBaseColorThemeData {
   Color get horoskopeFragmentMainColor;
   Color get horoskopeFragmentCardColor;
+  LinearGradient get horoskopeFragmentShimmerGradient;
 }
 
 abstract class HoroskopeFragmentButtonThemeData
@@ -58,29 +61,58 @@ class HoroskopeFragment extends StatelessWidget {
                 final forecast = state.todayForecast;
 
                 if (forecast == null) {
-                  return ElevatedCard(
-                    child: SizedBox(
-                      height: 200,
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          color: theme.colorTheme.horoskopeFragmentMainColor,
-                        ),
-                      ),
-                    ),
-                  );
+                  return _LoadingForecast(theme: theme);
                 }
-                return InfoCard(
-                  body: forecast,
-                  style: InfoCardStyle(
-                    color: theme.colorTheme.horoskopeFragmentCardColor,
-                    shadowColor: theme.colorTheme.horoskopeFragmentMainColor,
-                    body: theme.textTheme.forecastBody,
-                  ),
-                );
+                return _Forecast(forecast: forecast, theme: theme);
               },
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _Forecast extends StatelessWidget {
+  final String forecast;
+  final HoroskopeFragmentThemeData theme;
+
+  const _Forecast({
+    Key? key,
+    required this.forecast,
+    required this.theme,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InfoCard(
+      body: forecast,
+      style: InfoCardStyle(
+        color: theme.colorTheme.horoskopeFragmentCardColor,
+        shadowColor: theme.colorTheme.horoskopeFragmentMainColor,
+        body: theme.textTheme.forecastBody,
+      ),
+    );
+  }
+}
+
+class _LoadingForecast extends StatelessWidget {
+  const _LoadingForecast({
+    Key? key,
+    required this.theme,
+  }) : super(key: key);
+
+  final HoroskopeFragmentThemeData theme;
+
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer(
+      linearGradient: theme.colorTheme.horoskopeFragmentShimmerGradient,
+      child: const ShimmerLoading(
+        isLoading: true,
+        child: ElevatedCard(
+          child: SizedBox(height: 200),
+        ),
       ),
     );
   }

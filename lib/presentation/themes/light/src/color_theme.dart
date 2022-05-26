@@ -46,9 +46,6 @@ class _LightHoroskopeColorTheme implements HoroskopeColorThemeData {
   Color get aboutYouChartCardShadow => _AppColors.lightCoral;
 
   @override
-  Color get aboutYouChartLoadingIndicator => _AppColors.lightCoral;
-
-  @override
   Color get aboutYouEmptyChartCardBackground => _AppColors.white;
 
   @override
@@ -88,11 +85,70 @@ class _LightHoroskopeColorTheme implements HoroskopeColorThemeData {
   Color get welcomeCompatibilityCardShadow => _AppColors.lightGrey;
 
   @override
-  LinearGradient get shimmerGradient => const LinearGradient(
+  Color get compatibilityLoadingChartCardBackground => _AppColors.whiteUltra;
+
+  @override
+  Color get compatibilityLoadingChartCardShadow => _AppColors.lightGrey;
+
+  @override
+  LinearGradient get aboutYouFragmentShimmerGradient => const LinearGradient(
         colors: [
-          Color(0xFFEBEBF4),
-          Color(0xFFF4F4F4),
-          Color(0xFFEBEBF4),
+          _AppColors.isabelline,
+          _AppColors.whiteUltra,
+          _AppColors.isabelline,
+        ],
+        stops: [
+          0.1,
+          0.3,
+          0.4,
+        ],
+        begin: Alignment(-1.0, -0.3),
+        end: Alignment(1.0, 0.3),
+        tileMode: TileMode.clamp,
+      );
+
+  @override
+  LinearGradient get horoskopeFragmentShimmerGradient => const LinearGradient(
+        colors: [
+          _AppColors.whiteUltra,
+          _AppColors.white,
+          _AppColors.whiteUltra,
+        ],
+        stops: [
+          0.1,
+          0.3,
+          0.4,
+        ],
+        begin: Alignment(-1.0, -0.3),
+        end: Alignment(1.0, 0.3),
+        tileMode: TileMode.clamp,
+      );
+
+  @override
+  LinearGradient get compatibilityFragmentShimmerGradient =>
+      const LinearGradient(
+        colors: [
+          _AppColors.whiteUltra,
+          _AppColors.white,
+          _AppColors.whiteUltra,
+        ],
+        stops: [
+          0.1,
+          0.3,
+          0.4,
+        ],
+        begin: Alignment(-1.0, -0.3),
+        end: Alignment(1.0, 0.3),
+        tileMode: TileMode.clamp,
+      );
+
+  @override
+  LinearGradient get compatibilityDetailsShimmerGradient =>
+      const LinearGradient(
+        colors: [
+          _AppColors.whiteUltra,
+          _AppColors.white,
+          _AppColors.whiteUltra,
         ],
         stops: [
           0.1,
