@@ -141,4 +141,22 @@ class _LightHoroskopeColorTheme implements HoroskopeColorThemeData {
         end: Alignment(1.0, 0.3),
         tileMode: TileMode.clamp,
       );
+
+  @override
+  LinearGradient get compatibilityDetailsShimmerGradient =>
+      const LinearGradient(
+        colors: [
+          _AppColors.whiteUltra,
+          _AppColors.white,
+          _AppColors.whiteUltra,
+        ],
+        stops: [
+          0.1,
+          0.3,
+          0.4,
+        ],
+        begin: Alignment(-1.0, -0.3),
+        end: Alignment(1.0, 0.3),
+        tileMode: TileMode.clamp,
+      );
 }

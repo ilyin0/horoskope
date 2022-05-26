@@ -11,9 +11,12 @@ import 'package:horoskope/presentation/themes/styles/horoskope_button_style.dart
 import 'package:horoskope/presentation/utils/extensions/build_context_ext.dart';
 import 'package:horoskope/presentation/utils/extensions/zodiac_sign_ext.dart';
 import 'package:horoskope/presentation/widgets/bouncing_scroll_view.dart';
+import 'package:horoskope/presentation/widgets/elevated_card.dart';
 import 'package:horoskope/presentation/widgets/horoskope_button.dart';
 import 'package:horoskope/presentation/widgets/horoskope_page.dart';
 import 'package:horoskope/presentation/widgets/info_card.dart';
+import 'package:horoskope/presentation/widgets/shimmer.dart';
+import 'package:horoskope/presentation/widgets/shimmer_loading.dart';
 import 'package:horoskope/presentation/widgets/tab_names.dart';
 
 abstract class CompatibilityDetailsPageTextThemeData
@@ -33,6 +36,7 @@ abstract class CompatibilityDetailsPageColorThemeData
   Color get romanticCardShadow;
   Color get friendshipCard;
   Color get friendshipCardShadow;
+  LinearGradient get compatibilityDetailsShimmerGradient;
 }
 
 abstract class CompatibilityDetailsPageButtonThemeData
@@ -93,16 +97,20 @@ class _CompatibilityDetailsPageState extends State<CompatibilityDetailsPage> {
           builder: (context, state) => Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                children: [
-                  const SizedBox(height: 40),
-                  _buildBackButtonBlock(state),
-                  const SizedBox(height: 40),
-                  _buildVisualBlock(state),
-                  const SizedBox(height: 30),
-                  _buildDescriptionBlock(state),
-                  const SizedBox(height: 40),
-                ],
+              Shimmer(
+                linearGradient:
+                    widget.theme.colorTheme.compatibilityDetailsShimmerGradient,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 40),
+                    _buildBackButtonBlock(state),
+                    const SizedBox(height: 40),
+                    _buildVisualBlock(state),
+                    const SizedBox(height: 30),
+                    _buildDescriptionBlock(state),
+                    const SizedBox(height: 40),
+                  ],
+                ),
               ),
               _buildTabNames(state),
               const SizedBox(height: 40),
@@ -137,19 +145,21 @@ class _CompatibilityDetailsPageState extends State<CompatibilityDetailsPage> {
   }
 
   Widget _buildVisualBlock(CompatibilityDetailsState state) {
+    final compatibility = state.compatibility;
+
     return _VisualBlock(
+      loading: compatibility == null,
       first: CompatibilityPerson(
         //TODO add shimmer loading
-        name: state.compatibility?.userName ?? '',
-        zodiacSign: state.compatibility?.userZodiacSign ?? ZodiacSign.aquarius,
+        name: compatibility?.userName ?? '',
+        zodiacSign: compatibility?.userZodiacSign ?? ZodiacSign.aquarius,
       ),
       second: CompatibilityPerson(
         //TODO add shimmer loading
-        name: state.compatibility?.partnerName ?? '',
-        zodiacSign:
-            state.compatibility?.partnerZodiacSign ?? ZodiacSign.aquarius,
+        name: compatibility?.partnerName ?? '',
+        zodiacSign: compatibility?.partnerZodiacSign ?? ZodiacSign.aquarius,
       ),
-      compatibilityRate: state.compatibility?.romanticCompatibilityRate ?? 0,
+      compatibilityRate: compatibility?.romanticCompatibilityRate ?? 0,
       style: _VisualBlockStyle(
         rateStyle: widget.theme.textTheme.compatibilityDetailsRate,
         nameStyle: widget.theme.textTheme.compatibilityDetailsPersonName,
@@ -166,8 +176,11 @@ class _CompatibilityDetailsPageState extends State<CompatibilityDetailsPage> {
   }
 
   Widget _buildDescriptionBlock(CompatibilityDetailsState state) {
+    final compatibility = state.compatibility;
+
     return _DescriptionBlock(
-      cards: state.compatibility?.romanticCompatibilityItems ?? {},
+      loading: compatibility == null,
+      cards: compatibility?.romanticCompatibilityItems ?? {},
       style: InfoCardStyle(
         color: _getCardColor(state.tab),
         shadowColor: _getCardShadowColor(state.tab),
@@ -231,6 +244,7 @@ class _VisualBlock extends StatelessWidget {
   final CompatibilityPerson first;
   final CompatibilityPerson second;
   final int compatibilityRate;
+  final bool loading;
   final _VisualBlockStyle style;
 
   const _VisualBlock({
@@ -238,6 +252,7 @@ class _VisualBlock extends StatelessWidget {
     required this.first,
     required this.second,
     required this.style,
+    this.loading = false,
     this.compatibilityRate = 0,
   }) : super(key: key);
 
@@ -247,6 +262,7 @@ class _VisualBlock extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _SignWithName(
+          loading: loading,
           name: first.name,
           sign: first.zodiacSign,
           signColor: style.mainColor,
@@ -254,6 +270,7 @@ class _VisualBlock extends StatelessWidget {
         ),
         const SizedBox(width: 32),
         _CompatibilityRate(
+          loading: loading,
           rate: compatibilityRate,
           color: style.backgroundColor,
           borderColor: style.mainColor,
@@ -261,6 +278,7 @@ class _VisualBlock extends StatelessWidget {
         ),
         const SizedBox(width: 32),
         _SignWithName(
+          loading: loading,
           name: second.name,
           sign: second.zodiacSign,
           signColor: style.mainColor,
@@ -274,6 +292,7 @@ class _VisualBlock extends StatelessWidget {
 class _SignWithName extends StatelessWidget {
   final String name;
   final ZodiacSign sign;
+  final bool loading;
   final Color? signColor;
   final TextStyle? nameStyle;
 
@@ -281,12 +300,27 @@ class _SignWithName extends StatelessWidget {
     Key? key,
     required this.name,
     required this.sign,
+    this.loading = false,
     this.signColor,
     this.nameStyle,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    if (loading) {
+      return ShimmerLoading(
+        isLoading: true,
+        child: Container(
+          height: 64,
+          width: 64,
+          decoration: BoxDecoration(
+            color: signColor,
+            shape: BoxShape.circle,
+          ),
+        ),
+      );
+    }
+
     return Column(
       children: [
         Image.asset(
@@ -307,6 +341,7 @@ class _CompatibilityRate extends StatelessWidget {
   final int rate;
   final Color color;
   final Color borderColor;
+  final bool loading;
   final TextStyle? rateStyle;
 
   const _CompatibilityRate({
@@ -314,23 +349,27 @@ class _CompatibilityRate extends StatelessWidget {
     this.rate = 0,
     this.color = Colors.white,
     this.borderColor = Colors.black,
+    this.loading = false,
     this.rateStyle,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 72,
-      width: 72,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-        border: Border.all(width: 2, color: borderColor),
-      ),
-      child: Text(
-        rate.toString(),
-        style: rateStyle,
+    return ShimmerLoading(
+      isLoading: loading,
+      child: Container(
+        height: 72,
+        width: 72,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.circle,
+          border: Border.all(width: 2, color: borderColor),
+        ),
+        child: Text(
+          rate.toString(),
+          style: rateStyle,
+        ),
       ),
     );
   }
@@ -339,15 +378,19 @@ class _CompatibilityRate extends StatelessWidget {
 class _DescriptionBlock extends StatelessWidget {
   final Map<String, String> cards;
   final InfoCardStyle style;
+  final bool loading;
 
   const _DescriptionBlock({
     Key? key,
     required this.style,
     this.cards = const {},
+    this.loading = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    if (loading) return _loadingCards();
+
     return Column(
       children: cards.entries
           .map(
@@ -364,6 +407,32 @@ class _DescriptionBlock extends StatelessWidget {
             ),
           )
           .toList(),
+    );
+  }
+
+  Widget _loadingCards() {
+    return Column(
+      children: const [
+        _LoadingCard(),
+        _LoadingCard(),
+      ],
+    );
+  }
+}
+
+class _LoadingCard extends StatelessWidget {
+  const _LoadingCard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+      child: ShimmerLoading(
+        isLoading: true,
+        child: ElevatedCard(
+          child: SizedBox(height: 140),
+        ),
+      ),
     );
   }
 }
