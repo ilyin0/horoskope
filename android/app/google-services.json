@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "701100381423",
+    "project_id": "horoskope",
+    "storage_bucket": "horoskope.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701100381423:android:a0c2abbf7618d1c297b71a",
+        "android_client_info": {
+          "package_name": "com.example.horoskope"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701100381423-6kt60cngjgqhmgjolbl0g5raribcupc4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnLD-Yeo91l4bxKOilC9BEwvc9wJKT268"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701100381423-6kt60cngjgqhmgjolbl0g5raribcupc4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "701100381423-9euiebo7rnm7rcubm77j3aesn1rn4f0a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.horoskope"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
