@@ -36,21 +36,18 @@ abstract class AuthPageColorThemeData
 typedef AuthPageThemeData = HoroskopeThemeData<AuthPageTextThemeData,
     AuthPageColorThemeData, AuthPageButtonThemeData>;
 
-class AuthPage extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-  final _cubit = locator.get<AuthPageCubit>();
-
+class AuthPage extends StatefulWidget {
   final AuthPageThemeData theme;
   final _Auth _auth;
 
-  AuthPage._({
+  const AuthPage._({
     Key? key,
     required this.theme,
     required _Auth auth,
   })  : _auth = auth,
         super(key: key);
 
-  AuthPage.signIn({
+  const AuthPage.signIn({
     Key? key,
     required AuthPageThemeData theme,
   }) : this._(
@@ -59,7 +56,7 @@ class AuthPage extends StatelessWidget {
           auth: _Auth.signIn,
         );
 
-  AuthPage.signUp({
+  const AuthPage.signUp({
     Key? key,
     required AuthPageThemeData theme,
   }) : this._(
@@ -67,6 +64,43 @@ class AuthPage extends StatelessWidget {
           theme: theme,
           auth: _Auth.signUp,
         );
+
+  @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
+  final _formKey = GlobalKey<FormState>();
+
+  final _cubit = locator.get<AuthPageCubit>();
+
+  late final TextEditingController emailController;
+  late final TextEditingController passwordController;
+  late final TextEditingController confirmPasswordController;
+
+  @override
+  void initState() {
+    super.initState();
+    _initControllers();
+  }
+
+  void _initControllers() {
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    confirmPasswordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _disposeControllers();
+    super.dispose();
+  }
+
+  void _disposeControllers() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,50 +123,62 @@ class AuthPage extends StatelessWidget {
                 const SizedBox(height: 12),
                 Text(
                   context.localizations.horoskope,
-                  style: theme.textTheme.logoTitle,
+                  style: widget.theme.textTheme.logoTitle,
                 ),
                 const SizedBox(height: 60),
                 HoroskopeTextFormField(
+                  controller: emailController,
                   labelText: context.localizations.email,
-                  colorThemeData: theme.colorTheme,
+                  colorThemeData: widget.theme.colorTheme,
                   validator: Validators.email,
                 ),
                 const SizedBox(height: 12),
                 HoroskopeTextFormField(
+                  controller: passwordController,
                   labelText: context.localizations.password,
-                  colorThemeData: theme.colorTheme,
+                  colorThemeData: widget.theme.colorTheme,
                   validator: Validators.password,
                   obscureText: true,
                 ),
                 const SizedBox(height: 16),
-                if (_auth == _Auth.signUp) ...[
+                if (widget._auth == _Auth.signUp) ...[
                   HoroskopeTextFormField(
+                    controller: confirmPasswordController,
                     labelText: context.localizations.confirmPassword,
-                    colorThemeData: theme.colorTheme,
+                    colorThemeData: widget.theme.colorTheme,
+                    obscureText: true,
+                    validator: (value) => Validators.confirmPassword(
+                      value,
+                      passwordController.value.text,
+                    ),
                   ),
                   const SizedBox(height: 16),
                 ],
                 HoroskopeButton(
-                  child: Text(_auth.getAuthText(context)),
-                  style: theme.buttonTheme.signIn,
+                  child: Text(widget._auth.getAuthText(context)),
+                  style: widget.theme.buttonTheme.signIn,
                   onTap: () {
                     if (_formKey.currentState?.validate() ?? false) {
-                      _auth.onButtonTap(context).call();
+                      widget._auth.authWithEmailAndPassword(
+                        email: emailController.value.text,
+                        password: passwordController.value.text,
+                        cubit: _cubit,
+                      );
                     }
                   },
                 ),
                 const SizedBox(height: 16),
                 Text(context.localizations.or.toLowerCase()),
                 const SizedBox(height: 16),
-                Divider(color: theme.colorTheme.dividerColor),
+                Divider(color: widget.theme.colorTheme.dividerColor),
                 const SizedBox(height: 16),
                 _signInButtons(),
                 const SizedBox(height: 24),
                 TextAndAction(
-                  text: _auth.actionAndTextQuestionText(context),
-                  actionText: _auth.actionAndTextActionText(context),
-                  onActionTap: () => _auth.onActionTap(context).call(),
-                  theme: theme.textTheme,
+                  text: widget._auth.actionAndTextQuestionText(context),
+                  actionText: widget._auth.actionAndTextActionText(context),
+                  onActionTap: () => widget._auth.onActionTap(context).call(),
+                  theme: widget.theme.textTheme,
                 ),
                 const SizedBox(height: 24),
               ],
@@ -152,7 +198,7 @@ class AuthPage extends StatelessWidget {
             AppVectorAsset.apple,
             height: 32,
           ),
-          style: theme.buttonTheme.socialSignIn,
+          style: widget.theme.buttonTheme.socialSignIn,
           onTap: _cubit.signInAnonymously,
         ),
         HoroskopeButton(
@@ -160,7 +206,7 @@ class AuthPage extends StatelessWidget {
             AppVectorAsset.google,
             height: 32,
           ),
-          style: theme.buttonTheme.socialSignIn,
+          style: widget.theme.buttonTheme.socialSignIn,
           onTap: _cubit.signInAnonymously,
         ),
       ],

@@ -26,7 +26,7 @@ class AuthPageCubit extends Cubit<AuthPageState> {
     required String email,
     required String password,
   }) async {
-    final error = await _authService.signUpWithEmailAndPassword(
+    final error = await _authService.signInWithEmailAndPassword(
       email: email,
       password: password,
     );

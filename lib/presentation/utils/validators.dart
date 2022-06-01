@@ -34,4 +34,12 @@ abstract class Validators {
     }
     return 'Password must contain at least 8 characters including number, capital and special symbol';
   }
+
+  static String? confirmPassword(dynamic value, String reference) {
+    if (value == null || value.isEmpty) {
+      return 'Please, enter password';
+    }
+    if (value == reference) return null;
+    return 'Please check out password';
+  }
 }
