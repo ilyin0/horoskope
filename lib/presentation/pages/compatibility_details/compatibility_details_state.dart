@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:horoskope/domain/entities/compatibility.dart';
-import 'package:recase/recase.dart';
 
 class CompatibilityDetailsState extends Equatable {
   final CompatibilityDetailsTab tab;
@@ -27,10 +26,5 @@ class CompatibilityDetailsState extends Equatable {
 
 enum CompatibilityDetailsTab {
   romantic,
-  friendship;
-
-  @override
-  String toString() {
-    return name.sentenceCase;
-  }
+  friendship,
 }

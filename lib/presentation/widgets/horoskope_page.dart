@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:horoskope/presentation/app/auth_navigation_controller.dart';
 
 class HoroskopePage extends StatelessWidget {
   final Widget body;
@@ -30,23 +31,25 @@ class HoroskopePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final background = this.background;
 
-    return Stack(
-      children: [
-        Container(color: backgroundColor),
-        if (background != null)
-          SizedBox.expand(
-            child: background,
+    return AuthNavigationController(
+      child: Stack(
+        children: [
+          Container(color: backgroundColor),
+          if (background != null)
+            SizedBox.expand(
+              child: background,
+            ),
+          Scaffold(
+            key: key,
+            appBar: appBar,
+            body: SafeArea(
+              child: body,
+            ),
+            backgroundColor: Colors.transparent,
+            bottomNavigationBar: bottomNavigationBar,
           ),
-        Scaffold(
-          key: key,
-          appBar: appBar,
-          body: SafeArea(
-            child: body,
-          ),
-          backgroundColor: Colors.transparent,
-          bottomNavigationBar: bottomNavigationBar,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

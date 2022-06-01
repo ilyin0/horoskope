@@ -18,6 +18,7 @@ import 'package:horoskope/presentation/widgets/info_card.dart';
 import 'package:horoskope/presentation/widgets/shimmer.dart';
 import 'package:horoskope/presentation/widgets/shimmer_loading.dart';
 import 'package:horoskope/presentation/widgets/tab_names.dart';
+import 'package:recase/recase.dart';
 
 abstract class CompatibilityDetailsPageTextThemeData
     implements HoroskopeBaseTextThemeData {
@@ -205,7 +206,7 @@ class _CompatibilityDetailsPageState extends State<CompatibilityDetailsPage> {
       tabNames: CompatibilityDetailsTab.values
           .map(
             (value) => TabName(
-              name: value.toString(),
+              name: value.name.sentenceCase,
               isSelected: state.tab == value,
               style: _getTabStyle(value),
               onTap: () => _cubit.changeTab(value.index),

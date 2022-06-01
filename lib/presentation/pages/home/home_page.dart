@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
             activeTab: tabIndex,
             selectedItemColor: fragmentModel.mainColor,
           ),
-          body: fragmentModel.fragment,
+          body: SizedBox.expand(child: fragmentModel.fragment),
         );
       },
     );

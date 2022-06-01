@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:horoskope/di/locator.dart';
+import 'package:horoskope/presentation/pages/auth/auth_page_cubit.dart';
 import 'package:horoskope/presentation/resources/app_images_asset.dart';
 import 'package:horoskope/presentation/resources/app_vector_asset.dart';
 import 'package:horoskope/presentation/routes.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/themes/styles/horoskope_button_style.dart';
 import 'package:horoskope/presentation/utils/extensions/build_context_ext.dart';
+import 'package:horoskope/presentation/utils/validators.dart';
 import 'package:horoskope/presentation/widgets/horoskope_button.dart';
 import 'package:horoskope/presentation/widgets/horoskope_page.dart';
 import 'package:horoskope/presentation/widgets/horoskope_text_form_field.dart';
@@ -34,17 +37,20 @@ typedef AuthPageThemeData = HoroskopeThemeData<AuthPageTextThemeData,
     AuthPageColorThemeData, AuthPageButtonThemeData>;
 
 class AuthPage extends StatelessWidget {
+  final _formKey = GlobalKey<FormState>();
+  final _cubit = locator.get<AuthPageCubit>();
+
   final AuthPageThemeData theme;
   final _Auth _auth;
 
-  const AuthPage._({
+  AuthPage._({
     Key? key,
     required this.theme,
     required _Auth auth,
   })  : _auth = auth,
         super(key: key);
 
-  const AuthPage.signIn({
+  AuthPage.signIn({
     Key? key,
     required AuthPageThemeData theme,
   }) : this._(
@@ -53,7 +59,7 @@ class AuthPage extends StatelessWidget {
           auth: _Auth.signIn,
         );
 
-  const AuthPage.signUp({
+  AuthPage.signUp({
     Key? key,
     required AuthPageThemeData theme,
   }) : this._(
@@ -71,56 +77,66 @@ class AuthPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 36),
-          child: Column(
-            children: [
-              const SizedBox(height: 80),
-              SvgPicture.asset(
-                AppVectorAsset.horoskopeLogo,
-                height: 160,
-              ),
-              const SizedBox(height: 12),
-              Text(
-                context.localizations.horoskope,
-                style: theme.textTheme.logoTitle,
-              ),
-              const SizedBox(height: 60),
-              HoroskopeTextFormField(
-                labelText: context.localizations.email,
-                colorThemeData: theme.colorTheme,
-              ),
-              const SizedBox(height: 12),
-              HoroskopeTextFormField(
-                labelText: context.localizations.password,
-                colorThemeData: theme.colorTheme,
-              ),
-              const SizedBox(height: 16),
-              if (_auth == _Auth.signUp) ...[
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                const SizedBox(height: 80),
+                SvgPicture.asset(
+                  AppVectorAsset.horoskopeLogo,
+                  height: 160,
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  context.localizations.horoskope,
+                  style: theme.textTheme.logoTitle,
+                ),
+                const SizedBox(height: 60),
                 HoroskopeTextFormField(
-                  labelText: context.localizations.confirmPassword,
+                  labelText: context.localizations.email,
                   colorThemeData: theme.colorTheme,
+                  validator: Validators.email,
+                ),
+                const SizedBox(height: 12),
+                HoroskopeTextFormField(
+                  labelText: context.localizations.password,
+                  colorThemeData: theme.colorTheme,
+                  validator: Validators.password,
+                  obscureText: true,
                 ),
                 const SizedBox(height: 16),
+                if (_auth == _Auth.signUp) ...[
+                  HoroskopeTextFormField(
+                    labelText: context.localizations.confirmPassword,
+                    colorThemeData: theme.colorTheme,
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                HoroskopeButton(
+                  child: Text(_auth.getAuthText(context)),
+                  style: theme.buttonTheme.signIn,
+                  onTap: () {
+                    if (_formKey.currentState?.validate() ?? false) {
+                      _auth.onButtonTap(context).call();
+                    }
+                  },
+                ),
+                const SizedBox(height: 16),
+                Text(context.localizations.or.toLowerCase()),
+                const SizedBox(height: 16),
+                Divider(color: theme.colorTheme.dividerColor),
+                const SizedBox(height: 16),
+                _signInButtons(),
+                const SizedBox(height: 24),
+                TextAndAction(
+                  text: _auth.actionAndTextQuestionText(context),
+                  actionText: _auth.actionAndTextActionText(context),
+                  onActionTap: () => _auth.onActionTap(context).call(),
+                  theme: theme.textTheme,
+                ),
+                const SizedBox(height: 24),
               ],
-              HoroskopeButton(
-                child: Text(_auth.getAuthText(context)),
-                style: theme.buttonTheme.signIn,
-                onTap: () => _auth.onButtonTap(context).call(),
-              ),
-              const SizedBox(height: 16),
-              Text(context.localizations.or.toLowerCase()),
-              const SizedBox(height: 16),
-              Divider(color: theme.colorTheme.dividerColor),
-              const SizedBox(height: 16),
-              _signInButtons(),
-              const SizedBox(height: 24),
-              TextAndAction(
-                text: _auth.actionAndTextQuestionText(context),
-                actionText: _auth.actionAndTextActionText(context),
-                onActionTap: () => _auth.onActionTap(context).call(),
-                theme: theme.textTheme,
-              ),
-              const SizedBox(height: 24),
-            ],
+            ),
           ),
         ),
       ),
@@ -137,6 +153,7 @@ class AuthPage extends StatelessWidget {
             height: 32,
           ),
           style: theme.buttonTheme.socialSignIn,
+          onTap: _cubit.signInAnonymously,
         ),
         HoroskopeButton(
           child: SvgPicture.asset(
@@ -144,6 +161,7 @@ class AuthPage extends StatelessWidget {
             height: 32,
           ),
           style: theme.buttonTheme.socialSignIn,
+          onTap: _cubit.signInAnonymously,
         ),
       ],
     );
