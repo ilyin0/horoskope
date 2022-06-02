@@ -17,10 +17,22 @@ class HoroskopeCubit extends Cubit<HoroskopeState> {
   void _init() async {
     final todayForecast = await _astrodataRepository.getTodayForecast(
       sign: ZodiacSign.aries,
-      dateTime: DateTime.now(),
     );
     emit(
       state.copyWith(todayForecast: todayForecast),
+    );
+
+    final tomorrowForecast = await _astrodataRepository.getTomorrowForecast(
+      sign: ZodiacSign.aries,
+    );
+    emit(
+      state.copyWith(tomorrowForecast: tomorrowForecast),
+    );
+  }
+
+  void changeTab(int newTab) {
+    emit(
+      state.copyWith(tab: newTab),
     );
   }
 }

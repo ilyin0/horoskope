@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:horoskope/domain/entities/zodiac_sign.dart';
 import 'package:http/http.dart' as http;
 
-class DailyHoroskopeProvider {
+class OhmandaDailyHoroskopeProvider {
   static const _host = 'https://ohmanda.com/api/horoscope';
 
   static Future<String?> getTodayForecast({
