@@ -23,6 +23,7 @@ dependencies:
   recase: ^4.0.0
   firebase_core: ^1.17.1
   firebase_auth: ^3.3.19
+  http: ^0.13.4
 
 dev_dependencies:
   flutter_test:

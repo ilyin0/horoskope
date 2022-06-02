@@ -1,4 +1,4 @@
-import 'package:horoskope/domain/entities/zodiac_signs.dart';
+import 'package:horoskope/domain/entities/zodiac_sign.dart';
 
 class Compatibility {
   final int id;

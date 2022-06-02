@@ -1,8 +1,11 @@
-import 'package:horoskope/domain/entities/zodiac_signs.dart';
+import 'package:horoskope/domain/entities/zodiac_sign.dart';
 
 abstract class HoroskopeRepository {
-  Future<String> getTodayForecast({
+  Future<String?> getTodayForecast({
     required ZodiacSign sign,
-    required DateTime dateTime,
+  });
+
+  Future<String?> getTomorrowForecast({
+    required ZodiacSign sign,
   });
 }

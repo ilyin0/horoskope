@@ -36,7 +36,9 @@ typedef HoroskopeFragmentThemeData = HoroskopeThemeData<
 class HoroskopeFragment extends StatelessWidget {
   final HoroskopeFragmentThemeData theme;
 
-  const HoroskopeFragment({
+  final _cubit = locator.get<HoroskopeCubit>();
+
+  HoroskopeFragment({
     Key? key,
     required this.theme,
   }) : super(key: key);
@@ -51,14 +53,15 @@ class HoroskopeFragment extends StatelessWidget {
           TabNames.fromNames(
             names: const ['Today', 'Tomorrow', 'Week', 'Month'],
             style: theme.buttonTheme.tabNameStyle,
+            onTabNameTap: _cubit.changeTab,
           ),
           const SizedBox(height: 8, width: double.infinity),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: BlocBuilder<HoroskopeCubit, HoroskopeState>(
-              bloc: locator.get<HoroskopeCubit>(),
+              bloc: _cubit,
               builder: (context, state) {
-                final forecast = state.todayForecast;
+                final forecast = state.forecast;
 
                 if (forecast == null) {
                   return _LoadingForecast(theme: theme);
