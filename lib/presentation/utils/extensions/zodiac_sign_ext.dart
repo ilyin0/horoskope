@@ -1,4 +1,4 @@
-import 'package:horoskope/domain/entities/zodiac_signs.dart';
+import 'package:horoskope/domain/entities/zodiac_sign.dart';
 import 'package:horoskope/presentation/resources/app_images_asset.dart';
 
 extension SodiacSignExt on ZodiacSign {

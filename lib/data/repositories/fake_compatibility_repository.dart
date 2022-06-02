@@ -1,6 +1,6 @@
 import 'package:horoskope/domain/entities/compatibility.dart';
 import 'package:horoskope/domain/entities/short_compatibility.dart';
-import 'package:horoskope/domain/entities/zodiac_signs.dart';
+import 'package:horoskope/domain/entities/zodiac_sign.dart';
 import 'package:horoskope/domain/repositories/compatibility_repository.dart';
 import 'package:horoskope/domain/repositories/user_data_repository.dart';
 

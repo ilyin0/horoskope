@@ -1,5 +1,5 @@
 import 'package:horoskope/domain/entities/user_data.dart';
-import 'package:horoskope/domain/entities/zodiac_signs.dart';
+import 'package:horoskope/domain/entities/zodiac_sign.dart';
 import 'package:horoskope/domain/repositories/user_data_repository.dart';
 
 class FakeUserDataRepository implements UserDataRepository {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:horoskope/di/locator.dart';
 import 'package:horoskope/domain/entities/compatibility_person.dart';
-import 'package:horoskope/domain/entities/zodiac_signs.dart';
+import 'package:horoskope/domain/entities/zodiac_sign.dart';
 import 'package:horoskope/presentation/pages/compatibility_details/compatibility_details_cubit.dart';
 import 'package:horoskope/presentation/pages/compatibility_details/compatibility_details_state.dart';
 import 'package:horoskope/presentation/resources/app_images_asset.dart';

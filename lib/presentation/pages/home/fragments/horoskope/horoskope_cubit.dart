@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:horoskope/domain/entities/zodiac_signs.dart';
+import 'package:horoskope/domain/entities/zodiac_sign.dart';
 import 'package:horoskope/domain/repositories/horoskope_repository.dart';
 import 'package:horoskope/presentation/pages/home/fragments/horoskope/horoskope_state.dart';
 import 'package:injectable/injectable.dart';

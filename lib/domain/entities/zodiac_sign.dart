@@ -12,3 +12,9 @@ enum ZodiacSign {
   aquarius,
   pisces,
 }
+
+ZodiacSign zodiacSignFromString(String source) {
+  return ZodiacSign.values.firstWhere(
+    (sign) => sign.name == source,
+  );
+}
