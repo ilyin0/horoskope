@@ -45,16 +45,22 @@ extension on _Auth {
     }
   }
 
-  VoidCallback onButtonTap(BuildContext context) {
+  void authWithEmailAndPassword({
+    required String email,
+    required String password,
+    required AuthPageCubit cubit,
+  }) {
     switch (this) {
       case _Auth.signIn:
-        return () => Navigator.of(context).pushNamed(
-              Routes.home,
-            );
+        return cubit.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
       case _Auth.signUp:
-        return () => Navigator.of(context).pushNamed(
-              Routes.birthDataInput,
-            );
+        return cubit.signUpWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
     }
   }
 }

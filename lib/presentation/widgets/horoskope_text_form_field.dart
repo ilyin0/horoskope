@@ -19,6 +19,7 @@ class HoroskopeTextFormField extends TextFormField {
     bool? enabled,
     VoidCallback? onTap,
     FocusNode? focusNode,
+    bool obscureText = false,
   }) : super(
           key: key,
           onTap: onTap,
@@ -33,5 +34,6 @@ class HoroskopeTextFormField extends TextFormField {
           validator: validator,
           controller: controller,
           cursorColor: colorThemeData.cursorColor,
+          obscureText: obscureText,
         );
 }

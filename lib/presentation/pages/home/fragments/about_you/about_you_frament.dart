@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:horoskope/di/locator.dart';
+import 'package:horoskope/domain/services/auth_service.dart';
 import 'package:horoskope/presentation/pages/home/fragments/about_you/about_you_cubit.dart';
 import 'package:horoskope/presentation/pages/home/fragments/about_you/about_you_state.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/widgets/bouncing_scroll_view.dart';
 import 'package:horoskope/presentation/widgets/elevated_card.dart';
+import 'package:horoskope/presentation/widgets/horoskope_button.dart';
 import 'package:horoskope/presentation/widgets/info_card.dart';
 import 'package:horoskope/presentation/widgets/shimmer.dart';
 import 'package:horoskope/presentation/widgets/shimmer_loading.dart';
@@ -78,6 +80,17 @@ class AboutYouFragment extends StatelessWidget {
                 _Charts(
                   charts: state.additionalCharts,
                   theme: theme,
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: HoroskopeButton.expanded(
+                    //TODO localize
+                    child: const Text('Sign Out'),
+                    style: theme.buttonTheme.secondary2,
+                    //TODO fix it by moving to cubit
+                    onTap: locator.get<AuthService>().signOut,
+                  ),
                 ),
                 const SizedBox(height: 20),
               ],
