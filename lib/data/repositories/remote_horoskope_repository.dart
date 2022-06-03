@@ -1,3 +1,4 @@
+import 'package:horoskope/data/providers/astrology_api_horoskope_provider.dart';
 import 'package:horoskope/data/providers/ohmanda_daily_horoskope_provider.dart';
 import 'package:horoskope/data/providers/sameerkumar_daily_horoskope_provider.dart';
 import 'package:horoskope/domain/entities/zodiac_sign.dart';
@@ -14,5 +15,16 @@ class RemoteHoroskopeRepository implements HoroskopeRepository {
   @override
   Future<String?> getTomorrowForecast({required ZodiacSign sign}) {
     return SameerkumarDailyHoroskopeProvider.getTomorrowForecast(sign: sign);
+  }
+
+  @override
+  Future<String?> getTodayForecastByBirthDateAndName({
+    required DateTime birthDate,
+    required String name,
+  }) {
+    return AstrologyApiHoroskopeProvider.getDailyPrediction(
+      birthDate: birthDate,
+      name: name,
+    );
   }
 }
