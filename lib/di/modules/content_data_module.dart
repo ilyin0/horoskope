@@ -16,7 +16,10 @@ void disposeUserDataRepository(
 
 @module
 abstract class ContentDataModule {
-  HoroskopeRepository astrodataRepository() => RemoteHoroskopeRepository();
+  HoroskopeRepository astrodataRepository(
+    UserDataRepository userDataRepository,
+  ) =>
+      RemoteHoroskopeRepository(userDataRepository);
 
   NatalChartsRepository natalChartsRepository() => FakeNatalChartsRepository();
 
