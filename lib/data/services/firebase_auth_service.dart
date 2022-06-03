@@ -6,6 +6,9 @@ class FirebaseAuthService implements AuthService {
   Stream<User?> get authUserStream => FirebaseAuth.instance.authStateChanges();
 
   @override
+  User? get currentUser => FirebaseAuth.instance.currentUser;
+
+  @override
   Future<String?> signUpWithEmailAndPassword({
     required String email,
     required String password,

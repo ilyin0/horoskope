@@ -23,4 +23,5 @@ enum AuthState {
   unknown,
   authenticated,
   unauthenticated,
+  registered,
 }

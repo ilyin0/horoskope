@@ -1,3 +1,6 @@
+import 'package:horoskope/presentation/utils/constants.dart' as constants;
+import 'package:intl/intl.dart';
+
 abstract class Validators {
   static String? name(dynamic value) {
     if (value == null || value.isEmpty) {
@@ -41,5 +44,37 @@ abstract class Validators {
     }
     if (value == reference) return null;
     return 'Please check out password';
+  }
+
+  static String? date(dynamic value) {
+    if (value == null || value.isEmpty) {
+      return 'Please, select date';
+    }
+    try {
+      DateFormat(constants.datePattern).parse(value);
+      return null;
+    } catch (_) {
+      return 'Please, select or input correct date';
+    }
+  }
+
+  static String? time(dynamic value) {
+    if (value == null || value.isEmpty) {
+      return 'Please, select time';
+    }
+    try {
+      DateFormat(constants.timePattern).parse('$value');
+      return null;
+    } catch (_) {
+      return 'Please, select or input correct time';
+    }
+  }
+
+  //TODO: implement cities search
+  static String? city(dynamic value) {
+    if (value == null || value.isEmpty) {
+      return 'Please, input city name';
+    }
+    return null;
   }
 }

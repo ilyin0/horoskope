@@ -11,7 +11,7 @@ abstract class Routes {
   static const signIn = 'signIn';
   static const signUp = 'signUp';
   static const home = 'home';
-  static const birthDataInput = 'birthDataInput';
+  static const onboarding = 'onboarding';
   static const compatibilityDetails = 'compatibilityDetails';
   static const addFriend = 'addFriend';
 }
@@ -27,7 +27,7 @@ final Map<String, Widget Function(BuildContext)> appRoutes = {
   Routes.home: (context) => HomePage(
         theme: HoroskopeTheme.of(context),
       ),
-  Routes.birthDataInput: (context) => OnboardingPage(
+  Routes.onboarding: (context) => OnboardingPage(
         theme: HoroskopeTheme.of(context),
       ),
   Routes.addFriend: (context) => AddFriendPage(

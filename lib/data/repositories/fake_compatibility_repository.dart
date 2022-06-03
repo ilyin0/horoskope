@@ -36,10 +36,12 @@ class FakeCompatibilityRepository implements CompatibilityRepository {
   }
 
   @override
-  Future<Compatibility> getDetailedCompatibility({
+  Future<Compatibility?> getDetailedCompatibility({
     required int compatibilityId,
   }) async {
     final userData = await _userDataRepository.getUserData();
+
+    if (userData == null) return null;
 
     return Compatibility(
       id: 1,
