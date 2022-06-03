@@ -68,7 +68,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
                 '${birthDateController.value.text} ${birthTimeController.value.text}',
               ),
               //TODO: add real data
-              birthPlace: Geo(latitude: '0.0', longitude: '0.0'),
+              birthPlace: const Geo.zero(),
             ),
           );
         }

@@ -20,6 +20,7 @@ class FirebaseUserDataRepository implements UserDataRepository {
   StreamSubscription? _subscription;
   final _userDataSubject = BehaviorSubject<UserData?>();
 
+  @override
   Stream<UserData?> get userStream => _userDataSubject.stream;
   UserData? get userData => _userDataSubject.valueOrNull;
 
@@ -39,6 +40,7 @@ class FirebaseUserDataRepository implements UserDataRepository {
     }).listen((user) => _userDataSubject.add(user));
   }
 
+  @override
   void dispose() {
     _subscription?.cancel();
   }
