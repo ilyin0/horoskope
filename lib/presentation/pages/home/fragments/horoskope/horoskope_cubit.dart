@@ -15,8 +15,10 @@ class HoroskopeCubit extends Cubit<HoroskopeState> {
   }
 
   void _init() async {
-    final todayForecast = await _astrodataRepository.getTodayForecast(
-      sign: ZodiacSign.aries,
+    final todayForecast =
+        await _astrodataRepository.getTodayForecastByBirthDateAndName(
+      birthDate: DateTime(2000, 11, 7),
+      name: 'Alex',
     );
     emit(
       state.copyWith(todayForecast: todayForecast),

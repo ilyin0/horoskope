@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:horoskope/domain/entities/zodiac_sign.dart';
 import 'package:http/http.dart' as http;
 
-class SameerkumarDailyHoroskopeProvider {
+abstract class SameerkumarDailyHoroskopeProvider {
   static const _host = 'https://aztro.sameerkumar.website';
 
   static Future<String?> getTodayForecast({

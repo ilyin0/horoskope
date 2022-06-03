@@ -8,4 +8,9 @@ abstract class HoroskopeRepository {
   Future<String?> getTomorrowForecast({
     required ZodiacSign sign,
   });
+
+  Future<String?> getTodayForecastByBirthDateAndName({
+    required DateTime birthDate,
+    required String name,
+  });
 }
