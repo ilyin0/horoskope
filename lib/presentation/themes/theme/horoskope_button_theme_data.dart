@@ -5,7 +5,6 @@ abstract class HoroskopeButtonThemeData
         HoroskopeBaseButtonThemeData,
         HomePageButtonThemeData,
         AuthPageButtonThemeData,
-        OnboardingPageButtonThemeData,
         CompatibilityDetailsPageButtonThemeData {}
 
 abstract class HoroskopeBaseButtonThemeData {

@@ -32,6 +32,11 @@ class AuthNavigationController extends StatelessWidget {
             Routes.signIn,
             (route) => false,
           );
+        } else if (state.authState == AuthState.registered) {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+            Routes.onboarding,
+            (route) => false,
+          );
         }
       },
       child: child,
