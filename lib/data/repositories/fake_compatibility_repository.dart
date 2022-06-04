@@ -1,6 +1,5 @@
 import 'package:horoskope/domain/entities/compatibility.dart';
 import 'package:horoskope/domain/entities/short_compatibility.dart';
-import 'package:horoskope/domain/entities/zodiac_sign.dart';
 import 'package:horoskope/domain/repositories/compatibility_repository.dart';
 import 'package:horoskope/domain/repositories/user_data_repository.dart';
 
@@ -43,14 +42,9 @@ class FakeCompatibilityRepository implements CompatibilityRepository {
 
     if (userData == null) return null;
 
-    return Compatibility(
-      id: 1,
-      userName: userData.name,
-      userZodiacSign: userData.zodiacSign,
-      partnerName: 'Alice',
-      partnerZodiacSign: ZodiacSign.cancer,
+    return const Compatibility(
       romanticCompatibilityRate: 99,
-      frienshipCompatibilityRate: 93,
+      friendshipCompatibilityRate: 93,
       romanticCompatibilityItems: {
         'Basic Identities':
             'Detailed romantic compatibility data are temporaritly unavailable. We\'re currently working on this. Stay connected!',

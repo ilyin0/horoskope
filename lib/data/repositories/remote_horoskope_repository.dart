@@ -1,6 +1,8 @@
+import 'package:horoskope/data/providers/api_reports_horoskope_provider.dart';
 import 'package:horoskope/data/providers/astrology_api_horoskope_provider.dart';
 import 'package:horoskope/data/providers/ohmanda_daily_horoskope_provider.dart';
 import 'package:horoskope/data/providers/sameerkumar_daily_horoskope_provider.dart';
+import 'package:horoskope/domain/entities/friend_data.dart';
 import 'package:horoskope/domain/entities/zodiac_sign.dart';
 import 'package:horoskope/domain/repositories/horoskope_repository.dart';
 import 'package:horoskope/domain/repositories/user_data_repository.dart';
@@ -43,5 +45,18 @@ class RemoteHoroskopeRepository implements HoroskopeRepository {
       );
     }
     return null;
+  }
+
+  @override
+  Future<Map<String, String>?> getCompatibility({
+    required FriendData friendData,
+  }) async {
+    final userData = _userDataRepository.userData;
+    if (userData == null) return null;
+
+    return ApiReportsHoroskopeProvider.getCompatibility(
+      userData: userData,
+      friendData: friendData,
+    );
   }
 }

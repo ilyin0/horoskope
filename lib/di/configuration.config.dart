@@ -66,7 +66,8 @@ _i1.GetIt $configureDependencies(_i1.GetIt get,
   gh.factory<_i17.OnboardingCubit>(() => appModule.onboardingCubit(
       get<_i3.AuthService>(), get<_i6.UserDataRepository>()));
   gh.factory<_i18.CompatibilityDetailsCubit>(() =>
-      _i18.CompatibilityDetailsCubit(get<_i15.CompatibilityRepository>()));
+      appModule.compatibilityDetailsCubit(
+          get<_i16.HoroskopeRepository>(), get<_i6.UserDataRepository>()));
   gh.factory<_i19.HoroskopeCubit>(
       () => _i19.HoroskopeCubit(get<_i16.HoroskopeRepository>()));
   return get;

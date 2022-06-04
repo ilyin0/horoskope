@@ -1,28 +1,39 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:horoskope/domain/entities/compatibility.dart';
 import 'package:horoskope/domain/entities/friend_data.dart';
-import 'package:horoskope/domain/repositories/compatibility_repository.dart';
+import 'package:horoskope/domain/repositories/horoskope_repository.dart';
+import 'package:horoskope/domain/repositories/user_data_repository.dart';
 import 'package:horoskope/presentation/pages/compatibility_details/compatibility_details_state.dart';
-import 'package:injectable/injectable.dart';
 
-@injectable
 class CompatibilityDetailsCubit extends Cubit<CompatibilityDetailsState> {
-  final CompatibilityRepository _compatibilityRepository;
+  final HoroskopeRepository _horoskopeRepository;
+  final UserDataRepository _userDataRepository;
 
-  CompatibilityDetailsCubit(this._compatibilityRepository)
-      : super(const CompatibilityDetailsState());
+  CompatibilityDetailsCubit(
+    this._horoskopeRepository,
+    this._userDataRepository,
+  ) : super(const CompatibilityDetailsState());
 
   void init(FriendData friendData) async {
-    final compatibility =
-        await _compatibilityRepository.getDetailedCompatibility(
-      friendId: friendData.id,
+    final romanticCompatibilityItems =
+        await _horoskopeRepository.getCompatibility(
+      friendData: friendData,
     );
 
-    emit(
-      state.copyWith(
-        compatibility: compatibility,
-        friendData: friendData,
-      ),
-    );
+    final compatibility = state.compatibility ?? const Compatibility();
+    final userData = _userDataRepository.userData;
+
+    if (userData != null) {
+      emit(
+        state.copyWith(
+          userData: userData,
+          friendData: friendData,
+          compatibility: compatibility.copyWith(
+            romanticCompatibilityItems: romanticCompatibilityItems,
+          ),
+        ),
+      );
+    }
   }
 
   void changeTab(int index) {

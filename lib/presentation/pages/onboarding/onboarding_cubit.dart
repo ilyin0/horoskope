@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:horoskope/domain/entities/gender.dart';
 import 'package:horoskope/domain/entities/geo.dart';
 import 'package:horoskope/domain/entities/user_data.dart';
 import 'package:horoskope/domain/repositories/user_data_repository.dart';
@@ -69,6 +70,8 @@ class OnboardingCubit extends Cubit<OnboardingState> {
               ),
               //TODO: add real data
               birthPlace: const Geo.zero(),
+              //TODO: implement gender defining
+              gender: Gender.male,
             ),
           );
         }

@@ -1,25 +1,41 @@
-import 'package:horoskope/domain/entities/zodiac_sign.dart';
+import 'package:equatable/equatable.dart';
 
-class Compatibility {
-  final int id;
-  final String userName;
-  final ZodiacSign userZodiacSign;
-  final String partnerName;
-  final ZodiacSign partnerZodiacSign;
-  final int romanticCompatibilityRate;
-  final int frienshipCompatibilityRate;
-  final Map<String, String> romanticCompatibilityItems;
-  final Map<String, String> friendshipCompatibilityItems;
+class Compatibility extends Equatable {
+  final int? romanticCompatibilityRate;
+  final int? friendshipCompatibilityRate;
+  final Map<String, String>? romanticCompatibilityItems;
+  final Map<String, String>? friendshipCompatibilityItems;
 
   const Compatibility({
-    required this.id,
-    required this.userName,
-    required this.userZodiacSign,
-    required this.partnerName,
-    required this.partnerZodiacSign,
-    required this.romanticCompatibilityRate,
-    required this.frienshipCompatibilityRate,
-    required this.romanticCompatibilityItems,
-    required this.friendshipCompatibilityItems,
+    this.romanticCompatibilityRate,
+    this.friendshipCompatibilityRate,
+    this.romanticCompatibilityItems,
+    this.friendshipCompatibilityItems,
   });
+
+  Compatibility copyWith({
+    int? romanticCompatibilityRate,
+    int? friendshipCompatibilityRate,
+    Map<String, String>? romanticCompatibilityItems,
+    Map<String, String>? friendshipCompatibilityItems,
+  }) {
+    return Compatibility(
+      romanticCompatibilityRate:
+          romanticCompatibilityRate ?? this.romanticCompatibilityRate,
+      friendshipCompatibilityRate:
+          friendshipCompatibilityRate ?? this.friendshipCompatibilityRate,
+      romanticCompatibilityItems:
+          romanticCompatibilityItems ?? this.romanticCompatibilityItems,
+      friendshipCompatibilityItems:
+          friendshipCompatibilityItems ?? this.friendshipCompatibilityItems,
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+        romanticCompatibilityRate,
+        friendshipCompatibilityRate,
+        romanticCompatibilityItems,
+        friendshipCompatibilityItems,
+      ];
 }

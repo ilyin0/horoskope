@@ -93,31 +93,33 @@ class _CompatibilityDetailsPageState extends State<CompatibilityDetailsPage> {
       backgroundImage: const AssetImage(
         AppImagesAsset.compatibilityDetailsBackground,
       ),
-      body: BouncingScrollView(
-        child:
-            BlocBuilder<CompatibilityDetailsCubit, CompatibilityDetailsState>(
-          bloc: _cubit,
-          builder: (context, state) => Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Shimmer(
-                linearGradient:
-                    widget.theme.colorTheme.compatibilityDetailsShimmerGradient,
-                child: Column(
-                  children: [
-                    const SizedBox(height: 40),
-                    _buildBackButtonBlock(state),
-                    const SizedBox(height: 40),
-                    _buildVisualBlock(state),
-                    const SizedBox(height: 30),
-                    _buildDescriptionBlock(state),
-                    const SizedBox(height: 40),
-                  ],
+      body: SizedBox.expand(
+        child: BouncingScrollView(
+          child:
+              BlocBuilder<CompatibilityDetailsCubit, CompatibilityDetailsState>(
+            bloc: _cubit,
+            builder: (context, state) => Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Shimmer(
+                  linearGradient: widget
+                      .theme.colorTheme.compatibilityDetailsShimmerGradient,
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 40),
+                      _buildBackButtonBlock(state),
+                      const SizedBox(height: 40),
+                      _buildVisualBlock(state),
+                      const SizedBox(height: 30),
+                      _buildDescriptionBlock(state),
+                      const SizedBox(height: 40),
+                    ],
+                  ),
                 ),
-              ),
-              _buildTabNames(state),
-              const SizedBox(height: 40),
-            ],
+                _buildTabNames(state),
+                const SizedBox(height: 40),
+              ],
+            ),
           ),
         ),
       ),
@@ -150,17 +152,18 @@ class _CompatibilityDetailsPageState extends State<CompatibilityDetailsPage> {
   Widget _buildVisualBlock(CompatibilityDetailsState state) {
     final compatibility = state.compatibility;
     final friendData = state.friendData;
+    final userData = state.userData;
 
     return _VisualBlock(
       loading: compatibility == null || friendData == null,
       first: CompatibilityPerson(
-        name: compatibility?.userName ?? '',
-        zodiacSign: compatibility?.userZodiacSign ?? ZodiacSign.aquarius,
+        name: userData?.name ?? '',
+        zodiacSign: userData?.birthDateTime.toZodiacSign ?? ZodiacSign.aquarius,
       ),
       second: CompatibilityPerson(
-        name: state.friendData?.name ?? '',
+        name: friendData?.name ?? '',
         zodiacSign:
-            state.friendData?.birthDateTime.toZodiacSign ?? ZodiacSign.aquarius,
+            friendData?.birthDateTime.toZodiacSign ?? ZodiacSign.aquarius,
       ),
       compatibilityRate: state.compatibilityRate ?? 0,
       style: _VisualBlockStyle(
@@ -394,22 +397,25 @@ class _DescriptionBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     if (loading) return _loadingCards();
 
-    return Column(
-      children: cards.entries
-          .map(
-            (card) => Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 20,
-              ),
-              child: InfoCard(
-                title: card.key,
-                body: card.value,
-                style: style,
-              ),
+    final cardWidgets = cards.entries
+        .map(
+          (card) => Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 20,
             ),
-          )
-          .toList(),
+            child: InfoCard(
+              title: card.key,
+              body: card.value,
+              style: style,
+            ),
+          ),
+        )
+        .toList();
+
+    return Column(
+      children:
+          cardWidgets.isEmpty ? [_NotReadyCard(style: style)] : cardWidgets,
     );
   }
 
@@ -435,6 +441,27 @@ class _LoadingCard extends StatelessWidget {
         child: ElevatedCard(
           child: SizedBox(height: 140),
         ),
+      ),
+    );
+  }
+}
+
+class _NotReadyCard extends StatelessWidget {
+  final InfoCardStyle style;
+
+  const _NotReadyCard({
+    Key? key,
+    required this.style,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: InfoCard(
+        body:
+            'This kind of compatiblity isn\'t ready yet. We do our best to prepare it for you as soon as possible. Stay connected!',
+        style: style,
       ),
     );
   }
