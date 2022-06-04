@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:horoskope/di/locator.dart';
 import 'package:horoskope/domain/entities/compatibility_person.dart';
+import 'package:horoskope/domain/entities/friend_data.dart';
 import 'package:horoskope/domain/entities/zodiac_sign.dart';
 import 'package:horoskope/presentation/pages/compatibility_details/compatibility_details_cubit.dart';
 import 'package:horoskope/presentation/pages/compatibility_details/compatibility_details_state.dart';
@@ -9,6 +10,7 @@ import 'package:horoskope/presentation/resources/app_images_asset.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/themes/styles/horoskope_button_style.dart';
 import 'package:horoskope/presentation/utils/extensions/build_context_ext.dart';
+import 'package:horoskope/presentation/utils/extensions/date_time_ext.dart';
 import 'package:horoskope/presentation/utils/extensions/zodiac_sign_ext.dart';
 import 'package:horoskope/presentation/widgets/bouncing_scroll_view.dart';
 import 'package:horoskope/presentation/widgets/elevated_card.dart';
@@ -54,21 +56,21 @@ typedef CompatibilityDetailsPageThemeData = HoroskopeThemeData<
     CompatibilityDetailsPageButtonThemeData>;
 
 class CompatibilityDetailsPageArguments {
-  final int compatibilityId;
+  final FriendData friendData;
 
   CompatibilityDetailsPageArguments({
-    required this.compatibilityId,
+    required this.friendData,
   });
 }
 
 class CompatibilityDetailsPage extends StatefulWidget {
   final CompatibilityDetailsPageThemeData theme;
-  final int compatibilityId;
+  final FriendData friendData;
 
   const CompatibilityDetailsPage({
     Key? key,
     required this.theme,
-    required this.compatibilityId,
+    required this.friendData,
   }) : super(key: key);
 
   @override
@@ -82,7 +84,7 @@ class _CompatibilityDetailsPageState extends State<CompatibilityDetailsPage> {
   @override
   void initState() {
     super.initState();
-    _cubit.init(widget.compatibilityId);
+    _cubit.init(widget.friendData);
   }
 
   @override
@@ -147,18 +149,20 @@ class _CompatibilityDetailsPageState extends State<CompatibilityDetailsPage> {
 
   Widget _buildVisualBlock(CompatibilityDetailsState state) {
     final compatibility = state.compatibility;
+    final friendData = state.friendData;
 
     return _VisualBlock(
-      loading: compatibility == null,
+      loading: compatibility == null || friendData == null,
       first: CompatibilityPerson(
         name: compatibility?.userName ?? '',
         zodiacSign: compatibility?.userZodiacSign ?? ZodiacSign.aquarius,
       ),
       second: CompatibilityPerson(
-        name: compatibility?.partnerName ?? '',
-        zodiacSign: compatibility?.partnerZodiacSign ?? ZodiacSign.aquarius,
+        name: state.friendData?.name ?? '',
+        zodiacSign:
+            state.friendData?.birthDateTime.toZodiacSign ?? ZodiacSign.aquarius,
       ),
-      compatibilityRate: compatibility?.romanticCompatibilityRate ?? 0,
+      compatibilityRate: state.compatibilityRate ?? 0,
       style: _VisualBlockStyle(
         rateStyle: widget.theme.textTheme.compatibilityDetailsRate,
         nameStyle: widget.theme.textTheme.compatibilityDetailsPersonName,
@@ -179,7 +183,7 @@ class _CompatibilityDetailsPageState extends State<CompatibilityDetailsPage> {
 
     return _DescriptionBlock(
       loading: compatibility == null,
-      cards: compatibility?.romanticCompatibilityItems ?? {},
+      cards: state.compatibilityDetails ?? {},
       style: InfoCardStyle(
         color: _getCardColor(state.tab),
         shadowColor: _getCardShadowColor(state.tab),

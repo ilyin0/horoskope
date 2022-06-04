@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:horoskope/domain/entities/friend_data.dart';
 import 'package:horoskope/domain/repositories/compatibility_repository.dart';
 import 'package:horoskope/presentation/pages/compatibility_details/compatibility_details_state.dart';
 import 'package:injectable/injectable.dart';
@@ -10,14 +11,17 @@ class CompatibilityDetailsCubit extends Cubit<CompatibilityDetailsState> {
   CompatibilityDetailsCubit(this._compatibilityRepository)
       : super(const CompatibilityDetailsState());
 
-  void init(int compatibilityId) async {
+  void init(FriendData friendData) async {
     final compatibility =
         await _compatibilityRepository.getDetailedCompatibility(
-      compatibilityId: compatibilityId,
+      friendId: friendData.id,
     );
 
     emit(
-      state.copyWith(compatibility: compatibility),
+      state.copyWith(
+        compatibility: compatibility,
+        friendData: friendData,
+      ),
     );
   }
 

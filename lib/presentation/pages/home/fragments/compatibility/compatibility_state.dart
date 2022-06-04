@@ -1,17 +1,17 @@
-import 'package:horoskope/domain/entities/short_compatibility.dart';
+import 'package:horoskope/domain/entities/friend_data.dart';
 
 class CompatibilityState {
-  final List<ShortCompatibility>? compatibilityItems;
+  final List<FriendData>? friends;
 
   CompatibilityState({
-    this.compatibilityItems,
+    this.friends,
   });
 
   CompatibilityState copyWith({
-    List<ShortCompatibility>? compatibilityItems,
+    List<FriendData>? friends,
   }) {
     return CompatibilityState(
-      compatibilityItems: compatibilityItems ?? this.compatibilityItems,
+      friends: friends ?? this.friends,
     );
   }
 }

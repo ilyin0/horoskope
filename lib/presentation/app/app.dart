@@ -63,7 +63,7 @@ Route _onGenerateRoute(RouteSettings settings) {
     return MaterialPageRoute(
       builder: (context) => CompatibilityDetailsPage(
         theme: HoroskopeTheme.of(context),
-        compatibilityId: args.compatibilityId,
+        friendData: args.friendData,
       ),
     );
   }

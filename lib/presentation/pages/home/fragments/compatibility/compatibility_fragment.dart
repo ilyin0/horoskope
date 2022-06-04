@@ -2,19 +2,21 @@ import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:horoskope/di/locator.dart';
-import 'package:horoskope/domain/entities/short_compatibility.dart';
+import 'package:horoskope/domain/entities/friend_data.dart';
 import 'package:horoskope/presentation/pages/compatibility_details/compatibility_details_page.dart';
 import 'package:horoskope/presentation/pages/home/fragments/compatibility/compatibility_cubit.dart';
 import 'package:horoskope/presentation/pages/home/fragments/compatibility/compatibility_state.dart';
 import 'package:horoskope/presentation/routes.dart';
 import 'package:horoskope/presentation/themes/horoskope_theme.dart';
 import 'package:horoskope/presentation/utils/extensions/build_context_ext.dart';
+import 'package:horoskope/presentation/utils/extensions/date_time_ext.dart';
 import 'package:horoskope/presentation/widgets/compatibility_short_card.dart';
 import 'package:horoskope/presentation/widgets/elevated_card.dart';
 import 'package:horoskope/presentation/widgets/horoskope_button.dart';
 import 'package:horoskope/presentation/widgets/info_card.dart';
 import 'package:horoskope/presentation/widgets/shimmer.dart';
 import 'package:horoskope/presentation/widgets/shimmer_loading.dart';
+import 'package:recase/recase.dart';
 
 abstract class CompatibilityFragmentColorThemeData
     implements CompatibilityShortCardColorThemeData {
@@ -58,11 +60,13 @@ class _CompatibilityFragmentState extends State<CompatibilityFragment> {
   void initState() {
     super.initState();
     _scrollController = ScrollController();
+    _cubit.init();
   }
 
   @override
   void dispose() {
     _scrollController.dispose();
+    _cubit.dispose();
     super.dispose();
   }
 
@@ -78,17 +82,21 @@ class _CompatibilityFragmentState extends State<CompatibilityFragment> {
             gradientFractionOnEnd: 0,
             child: SingleChildScrollView(
               controller: _scrollController,
+              reverse: true,
               physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  _Cards(
-                    theme: widget.theme,
-                    compatibilityItems: state.compatibilityItems,
-                  ),
-                  const SizedBox(height: 40),
-                  _AddFriendButton(buttonTheme: widget.theme.buttonTheme),
-                  const SizedBox(height: 20),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    _Cards(
+                      theme: widget.theme,
+                      friends: state.friends,
+                    ),
+                    const SizedBox(height: 40),
+                    _AddFriendButton(buttonTheme: widget.theme.buttonTheme),
+                    const SizedBox(height: 20),
+                  ],
+                ),
               ),
             ),
           );
@@ -108,80 +116,73 @@ class _AddFriendButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: HoroskopeButton.expanded(
-        onTap: () => Navigator.of(context).pushNamed(Routes.addFriend),
-        child: Text(context.localizations.addFriend),
-        style: buttonTheme.secondary2,
-      ),
+    return HoroskopeButton.expanded(
+      onTap: () => Navigator.of(context).pushNamed(Routes.addFriend),
+      child: Text(context.localizations.addFriend),
+      style: buttonTheme.secondary2,
     );
   }
 }
 
 class _Cards extends StatelessWidget {
   final CompatibilityFragmentThemeData theme;
-  final List<ShortCompatibility>? compatibilityItems;
+  final List<FriendData>? friends;
 
   const _Cards({
     Key? key,
     required this.theme,
-    required this.compatibilityItems,
+    required this.friends,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final compatibilityItems = this.compatibilityItems;
+    final friends = this.friends;
 
-    if (compatibilityItems == null) {
+    if (friends == null) {
       return _LoadingCards(
         colorTheme: theme.colorTheme,
       );
     }
-    if (compatibilityItems.isEmpty) {
+    if (friends.isEmpty) {
       return _WelcomeCard(theme: theme);
     } else {
-      return _CompatibilityCards(
-        compatibilityItems: compatibilityItems,
+      return _FriendsCards(
+        friends: friends,
         theme: theme,
       );
     }
   }
 }
 
-class _CompatibilityCards extends StatelessWidget {
+class _FriendsCards extends StatelessWidget {
   final CompatibilityFragmentThemeData theme;
-  final List<ShortCompatibility> compatibilityItems;
+  final List<FriendData> friends;
 
-  const _CompatibilityCards({
+  const _FriendsCards({
     Key? key,
     required this.theme,
-    required this.compatibilityItems,
+    required this.friends,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: compatibilityItems
+      children: friends
           .map(
-            (item) => Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 4,
-                horizontal: 20,
-              ),
+            (friend) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
               child: CompatibilityShortCard(
                 onTap: () {
                   Navigator.of(context).pushNamed(
                     Routes.compatibilityDetails,
                     arguments: CompatibilityDetailsPageArguments(
-                      compatibilityId: item.id,
+                      friendData: friend,
                     ),
                   );
                 },
-                title: item.name,
-                subtitle: item.shortDescription,
-                rate: item.romanticCompatibility,
+                title: friend.name,
+                subtitle: friend.birthDateTime.toZodiacSign.name.sentenceCase,
                 theme: theme,
               ),
             ),
