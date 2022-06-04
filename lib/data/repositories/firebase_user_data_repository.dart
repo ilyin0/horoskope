@@ -22,6 +22,7 @@ class FirebaseUserDataRepository implements UserDataRepository {
 
   @override
   Stream<UserData?> get userStream => _userDataSubject.stream;
+  @override
   UserData? get userData => _userDataSubject.valueOrNull;
 
   void _init() {
