@@ -1,6 +1,5 @@
 import 'package:horoskope/domain/entities/compatibility.dart';
 import 'package:horoskope/domain/entities/short_compatibility.dart';
-import 'package:horoskope/domain/entities/zodiac_sign.dart';
 import 'package:horoskope/domain/repositories/compatibility_repository.dart';
 import 'package:horoskope/domain/repositories/user_data_repository.dart';
 
@@ -10,7 +9,7 @@ class FakeCompatibilityRepository implements CompatibilityRepository {
   const FakeCompatibilityRepository(this._userDataRepository);
 
   @override
-  Future<List<ShortCompatibility>> getAllShortCompatibilities(int userId) {
+  Future<List<ShortCompatibility>> getAllShortCompatibilities() {
     return Future.delayed(
       const Duration(seconds: 3),
       () => const [
@@ -37,31 +36,26 @@ class FakeCompatibilityRepository implements CompatibilityRepository {
 
   @override
   Future<Compatibility?> getDetailedCompatibility({
-    required int compatibilityId,
+    required String friendId,
   }) async {
     final userData = await _userDataRepository.getUserData();
 
     if (userData == null) return null;
 
-    return Compatibility(
-      id: 1,
-      userName: userData.name,
-      userZodiacSign: userData.zodiacSign,
-      partnerName: 'Alice',
-      partnerZodiacSign: ZodiacSign.cancer,
-      romanticCompatibilityRate: 78,
-      frienshipCompatibilityRate: 64,
+    return const Compatibility(
+      romanticCompatibilityRate: 99,
+      friendshipCompatibilityRate: 93,
       romanticCompatibilityItems: {
         'Basic Identities':
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor, eget efficitur nibh pharetra eget. Maecenas ultrices sagittis risus, vitae venenatis elit volutpat quis. In id feugiat nisl',
+            'Detailed romantic compatibility data are temporaritly unavailable. We\'re currently working on this. Stay connected!',
         'Emotional Styles':
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor, eget efficitur nibh pharetra eget. Maecenas ultrices sagittis risus'
+            'Detailed romantic compatibility data are temporaritly unavailable. We\'re currently working on this. Stay connected!'
       },
       friendshipCompatibilityItems: {
         'Basic Identities':
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor, eget efficitur nibh pharetra eget. Maecenas ultrices sagittis risus',
+            'Detailed friendship compatibility data are temporaritly unavailable. We\'re currently working on this. Stay connected!',
         'Emotional Styles':
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porta porttitor tortor, eget efficitur nibh pharetra eget. Maecenas ultrices sagittis risus, vitae venenatis elit volutpat quis. In id feugiat nisl',
+            'Detailed friendship compatibility data are temporaritly unavailable. We\'re currently working on this. Stay connected!',
       },
     );
   }

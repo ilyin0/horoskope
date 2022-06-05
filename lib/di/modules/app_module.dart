@@ -1,7 +1,11 @@
+import 'package:horoskope/domain/repositories/horoskope_repository.dart';
 import 'package:horoskope/domain/repositories/user_data_repository.dart';
+import 'package:horoskope/domain/repositories/user_friends_repository.dart';
 import 'package:horoskope/domain/services/auth_service.dart';
 import 'package:horoskope/presentation/app/app_cubit.dart';
+import 'package:horoskope/presentation/pages/add_friend/add_friend_cubit.dart';
 import 'package:horoskope/presentation/pages/auth/auth_page_cubit.dart';
+import 'package:horoskope/presentation/pages/compatibility_details/compatibility_details_cubit.dart';
 import 'package:horoskope/presentation/pages/onboarding/onboarding_cubit.dart';
 import 'package:injectable/injectable.dart';
 
@@ -29,6 +33,20 @@ abstract class AppModule {
   ) =>
       OnboardingCubit(
         authService,
+        userDataRepository,
+      );
+
+  AddFriendCubit addFriendCubit(
+    UserFriendsRepository userFriendsRepository,
+  ) =>
+      AddFriendCubit(userFriendsRepository);
+
+  CompatibilityDetailsCubit compatibilityDetailsCubit(
+    HoroskopeRepository horoskopeRepository,
+    UserDataRepository userDataRepository,
+  ) =>
+      CompatibilityDetailsCubit(
+        horoskopeRepository,
         userDataRepository,
       );
 }

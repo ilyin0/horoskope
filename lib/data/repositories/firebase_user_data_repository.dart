@@ -67,17 +67,6 @@ class FirebaseUserDataRepository implements UserDataRepository {
   DocumentReference<Map<String, dynamic>> _getUserDocRef(String uid) =>
       FirestoreDatabaseProvider.db.doc('users/$uid');
 
-  // @override
-  // Stream<UserData?> get userDataStream {
-  //   final userId = _authService.currentUser?.uid;
-
-  //   if (userId != null) {
-  //     return _usersCollection.doc(userId).get().asStream().map(
-  //           UserData.fromSnapshot,
-  //         );
-  //   }
-  // }
-
   @override
   Future<UserData?> getUserData() async {
     final userId = _authService.currentUser?.uid;
